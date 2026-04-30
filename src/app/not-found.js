@@ -42,7 +42,7 @@ export default function NotFound() {
             Go Home
           </Link>
           <Link
-            href="/all-tiles"
+            href="/allTiles"
             className="px-7 py-3 rounded-xl text-sm font-medium transition-colors hover:opacity-70"
             style={{
               border: "1px solid #CFC9C0",

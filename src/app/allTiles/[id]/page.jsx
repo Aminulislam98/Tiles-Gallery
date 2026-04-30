@@ -11,7 +11,9 @@ export default async function TileDetailPage({ params }) {
   const res = await fetch("https://tiles-gallery-server-1.onrender.com/tiles");
   const allTiles = await res.json();
   const tile = allTiles.find((singleTile) => singleTile.id == id);
-  console.log(tile);
+  const similarTiles = allTiles.filter(
+    (t) => t.category === tile.category && t.id != tile.id,
+  );
 
   return (
     <>
@@ -166,7 +168,7 @@ export default async function TileDetailPage({ params }) {
 
                 {/* Actions */}
                 <div className="flex gap-3">
-                  <button className="flex-1 py-3.5 rounded-xl text-sm font-medium text-white transition-opacity bg-[#0F0E0C] h">
+                  <button className="flex-1 py-3.5 rounded-xl text-sm font-medium text-white transition-opacity bg-[#0F0E0C] hover:text-white hover:bg-[#B85C38]">
                     Add to Wishlist
                   </button>
                   <button className="px-4 py-3.5 rounded-xl transition-colors hover:border-[#B85C38] hover:text-[#B85C38] bg-white border border-[#E4DFD8] text-[#8C8880]">
@@ -195,16 +197,17 @@ export default async function TileDetailPage({ params }) {
                 className="font-display font-light leading-tight mb-10"
                 style={{ fontSize: "clamp(28px,3vw,40px)", color: "#0F0E0C" }}
               >
-                You might also <em style={{ color: "#B85C38" }}>like</em>
+                You might also <em style={{ color: "#B85C38" }}>like</em>{" "}
+                similar tiles
               </h2>
             </FadeUp>
-            {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {related.map((t, i) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {similarTiles.map((t, i) => (
                 <FadeUp key={t.id} delay={i * 80}>
                   <TileCard tile={t} />
                 </FadeUp>
               ))}
-            </div> */}
+            </div>
           </div>
         </div>
       </main>

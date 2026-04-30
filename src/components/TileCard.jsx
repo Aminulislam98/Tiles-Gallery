@@ -56,7 +56,7 @@ export default function TileCard({ tile }) {
             ${tile.price.toFixed(2)}
           </span>
           <Link
-            href={`/tile/${tile.id}`}
+            href={`/allTiles/${tile.id}`}
             className="px-4 py-1.5 rounded-lg text-sm font-medium text-white transition-colors hover:opacity-80"
             style={{ background: "#0F0E0C" }}
           >

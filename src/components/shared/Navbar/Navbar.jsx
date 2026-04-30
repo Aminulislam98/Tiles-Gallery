@@ -60,7 +60,7 @@ export default function Navbar({ dark = false }) {
         <ul className="hidden md:flex items-center gap-1 list-none m-0 p-0">
           {[
             { href: "/", label: "Home" },
-            { href: "/all-tiles", label: "All Tiles" },
+            { href: "/allTiles", label: "All Tiles" },
             { href: "/my-profile", label: "My Profile" },
           ].map((link) => (
             <li key={link.href}>

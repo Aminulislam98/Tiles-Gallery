@@ -8,6 +8,8 @@ import Navbar from "@/components/shared/Navbar/Navbar";
 import Marquee from "react-fast-marquee";
 import FadeUp from "@/components/ui/FadeUp";
 import Image from "next/image";
+import TileCard from "@/components/TileCard";
+import Footer from "@/components/shared/Footer/Footer";
 
 // const featured = tilesData.slice(0, 4);
 
@@ -26,7 +28,12 @@ const stats = [
   { num: "99%", label: "Satisfaction Rate" },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const res = await fetch("https://tiles-gallery-server-1.onrender.com/tiles");
+  const tilesData = await res.json();
+  console.log(tilesData.length);
+  const featuredTiles = tilesData.slice(0, 4);
+  console.log(featuredTiles);
   return (
     <>
       <Navbar dark />
@@ -97,14 +104,14 @@ export default function HomePage() {
 
             <div className="flex flex-wrap gap-4">
               <Link
-                href="/all-tiles"
+                href="/allTiles"
                 className="px-8 py-3.5 rounded-xl text-sm font-medium text-white transition-opacity hover:opacity-90"
                 style={{ background: "#B85C38" }}
               >
                 Browse Gallery →
               </Link>
               <Link
-                href="/all-tiles"
+                href="/allTiles"
                 className="px-7 py-3.5 rounded-xl text-sm font-medium text-white transition-colors hover:bg-white/10"
                 style={{ border: "1px solid rgba(255,255,255,0.25)" }}
               >
@@ -179,7 +186,7 @@ export default function HomePage() {
                 </h2>
               </div>
               <Link
-                href="/all-tiles"
+                href="/allTiles"
                 className="text-sm font-medium hidden md:block"
                 style={{ color: "#B85C38" }}
               >
@@ -189,24 +196,24 @@ export default function HomePage() {
           </FadeUp>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {/* {featured.map((tile, i) => (
+            {featuredTiles.map((tile, i) => (
               <FadeUp key={tile.id} delay={i * 80}>
                 <TileCard tile={tile} />
               </FadeUp>
-            ))} */}
+            ))}
           </div>
         </div>
       </section>
 
       {/* ── FULL BLEED BANNER ── */}
       <section className="relative h-[500px] overflow-hidden flex items-center justify-center">
-        {/* <Image
+        <Image
           src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1800&q=85"
           alt="Interior"
           fill
           className="object-cover"
           sizes="100vw"
-        /> */}
+        />
         <div
           className="absolute inset-0"
           style={{ background: "rgba(15,14,12,0.72)" }}
@@ -237,7 +244,7 @@ export default function HomePage() {
               tiles that define a room.
             </p>
             <Link
-              href="/all-tiles"
+              href="/allTiles"
               className="inline-block px-9 py-3.5 rounded-xl text-sm font-medium text-white transition-opacity hover:opacity-90"
               style={{ background: "#B85C38" }}
             >
@@ -278,13 +285,13 @@ export default function HomePage() {
 
       {/* ── CTA SIGN UP ── */}
       <section className="relative overflow-hidden">
-        {/* <Image
+        <Image
           src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=1800&q=85"
           alt="Tiles"
           fill
           className="object-cover"
           sizes="100vw"
-        /> */}
+        />
         <div
           className="absolute inset-0"
           style={{ background: "rgba(15,14,12,0.80)" }}
@@ -317,7 +324,7 @@ export default function HomePage() {
                 Start for Free
               </Link>
               <Link
-                href="/all-tiles"
+                href="/allTiles"
                 className="px-7 py-3.5 rounded-xl text-sm font-medium text-white transition-colors hover:bg-white/10"
                 style={{ border: "1px solid rgba(255,255,255,0.25)" }}
               >
@@ -328,7 +335,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

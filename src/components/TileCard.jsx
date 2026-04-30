@@ -2,12 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 // size: "sm" | "md" | "lg"
-export default function TileCard({ tile, size = "md" }) {
-  const imgH = size === "lg" ? "h-64" : size === "sm" ? "h-44" : "h-52";
-
+export default function TileCard({ tile }) {
   return (
     <div
-      className="rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
+      className="rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 w-full"
       style={{
         background: "#fff",
         border: "1px solid #E4DFD8",
@@ -15,7 +13,7 @@ export default function TileCard({ tile, size = "md" }) {
       }}
     >
       {/* Image */}
-      <div className={`relative ${imgH} overflow-hidden`}>
+      <div className={`relative overflow-hidden max-w-full w-full h-64`}>
         <Image
           src={tile.image}
           alt={tile.title}

@@ -5,10 +5,9 @@ import Link from "next/link";
 // import FadeUp from "@/components/ui/FadeUp";
 // import { tilesData } from "@/data/tiles";
 import Navbar from "@/components/shared/Navbar/Navbar";
-import FadeUp from "@/components/ui/FadeUp";
-import TileCard from "@/components/TileCard";
-import Image from "next/image";
 import Marquee from "react-fast-marquee";
+import FadeUp from "@/components/ui/FadeUp";
+import Image from "next/image";
 
 // const featured = tilesData.slice(0, 4);
 
@@ -33,18 +32,16 @@ export default function HomePage() {
       <Navbar dark />
 
       {/* ── HERO ── */}
-      <section className="relative h-screen min-h-[680px] overflow-hidden">
-        {/* <Image
-          width={1800}
-          height={1800}
+      <section className="relative h-screen min-h-170 overflow-hidden">
+        <Image
           src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1800&q=85"
           alt="Premium tile interior"
           fill
           priority
           className="object-cover"
           sizes="100vw"
-        /> */}
-        {/* Gradient overlay */}
+        />
+        {/* {/* Gradient overlay */}
         <div
           className="absolute inset-0"
           style={{
@@ -65,7 +62,6 @@ export default function HomePage() {
           <div className="max-w-2xl">
             {/* Eyebrow */}
             <div className="flex items-center gap-3 mb-6">
-              <span className="w-8 h-px" style={{ background: "#B85C38" }} />
               <span
                 className="text-xs font-semibold tracking-widest uppercase"
                 style={{ color: "#B85C38" }}
@@ -132,11 +128,16 @@ export default function HomePage() {
       </section>
 
       {/* ── MARQUEE ── */}
-      <div className="overflow-hidden py-4" style={{ background: "#0F0E0C" }}>
-        <div className="marquee-track">
+      <div className="overflow-hidden py-3 bg-[#0F0E0C]">
+        <Marquee
+          gradient={false}
+          speed={40}
+          pauseOnHover
+          className="flex items-center gap-4"
+        >
           {[...marqueeItems, ...marqueeItems].map((item, i) => (
             <span key={i} className="inline-flex items-center shrink-0">
-              <Marquee
+              <span
                 className="px-10 text-xs font-medium tracking-wide"
                 style={{
                   color: "rgba(255,255,255,0.45)",
@@ -144,14 +145,14 @@ export default function HomePage() {
                 }}
               >
                 {item}
-              </Marquee>
+              </span>
               <span
                 className="w-1 h-1 rounded-full shrink-0"
                 style={{ background: "#B85C38" }}
               />
             </span>
           ))}
-        </div>
+        </Marquee>
       </div>
 
       {/* ── FEATURED TILES ── */}

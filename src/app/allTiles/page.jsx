@@ -2,15 +2,15 @@ import Image from "next/image";
 // import { HiSearch } from "react-icons/hi";
 
 // import Footer from "@/components/layout/Footer";
-import FadeUp from "@/components/ui/FadeUp";
 import Navbar from "@/components/shared/Navbar/Navbar";
 import TileCard from "@/components/TileCard";
 import Footer from "@/components/shared/Footer/Footer";
 import CategoryButton from "@/components/ui/CategoryButton";
-import Link from "next/link";
+import SearchInput from "@/components/ui/SearchInput";
+import { Suspense } from "react";
 
 export default async function AllTilesPage({ searchParams }) {
-  const { category } = await searchParams;
+  const { search, category } = await searchParams;
 
   const tilesRes = await fetch(
     "https://tiles-gallery-server-1.onrender.com/tiles",
@@ -27,11 +27,7 @@ export default async function AllTilesPage({ searchParams }) {
       id: "cat-0",
       name: "AllTiles",
     },
-    {
-      id: "cat-1",
-      name: "Zellige",
-      slug: "zellige",
-    },
+
     {
       id: "cat-2",
       name: "Marble",
@@ -45,7 +41,12 @@ export default async function AllTilesPage({ searchParams }) {
     {
       id: "cat-4",
       name: "Natural Stone",
-      slug: "natural-stone",
+      slug: "natural stone",
+    },
+    {
+      id: "cat-1",
+      name: "Zellige",
+      slug: "zellige",
     },
     {
       id: "cat-5",
@@ -77,11 +78,20 @@ export default async function AllTilesPage({ searchParams }) {
   //   });
   // }, [search, activeCategory]);
 
-  const filterTiles = category
-    ? allTiles.filter(
-        (tiles) => tiles.category.toLowerCase() == category.toLowerCase(),
-      )
-    : allTiles;
+  // const filterTiles = category
+  //   ? allTiles.filter(
+  //       (tiles) => tiles.category.toLowerCase() == category.toLowerCase(),
+  //     )
+  //   : allTiles;
+  const filterTiles = allTiles.filter((tile) => {
+    const matchCategory = category
+      ? tile.category.toLowerCase() === category.toLowerCase()
+      : true;
+    const matchSearch = search
+      ? tile.title.toLowerCase().includes(search.toLowerCase())
+      : true;
+    return matchCategory && matchSearch;
+  });
 
   return (
     <>
@@ -128,6 +138,9 @@ export default async function AllTilesPage({ searchParams }) {
             >
               Browse our complete collection of premium artisan tiles.
             </p>
+            <Suspense fallback={<div>Loading...</div>}>
+              <SearchInput defaultValue={search || ""} />
+            </Suspense>
           </div>
         </div>
 
@@ -138,12 +151,6 @@ export default async function AllTilesPage({ searchParams }) {
         >
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex gap-2 py-4 overflow-x-auto">
-              {/* <Link
-                className="text-sm font-medium whitespace-nowrap transition-colors flex justify-center items-center"
-                href={`/allTiles`}
-              >
-                All Tiles
-              </Link> */}
               {categories.map((cat) => (
                 <CategoryButton key={cat.id} cat={cat}></CategoryButton>
               ))}
@@ -154,7 +161,7 @@ export default async function AllTilesPage({ searchParams }) {
 
       {/* Grid */}
       <section className="max-w-7xl w-full mx-auto px-6 py-14">
-        {allTiles.length === 0 ? (
+        {filterTiles.length === 0 ? (
           <div className="text-center py-24">
             <p
               className="font-display text-3xl mb-2"
@@ -168,15 +175,9 @@ export default async function AllTilesPage({ searchParams }) {
           </div>
         ) : (
           <>
-            {/* <p className="text-sm mb-8" style={{ color: "#8C8880" }}>
-              Showing {allTiles.length} tile{filtered.length !== 1 ? "s" : ""}
-              {activeCategory !== "All" ? ` in ${activeCategory}` : ""}
-            </p> */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {filterTiles.map((tile, i) => (
-                <FadeUp key={tile.id} delay={i * 60}>
-                  <TileCard tile={tile} />
-                </FadeUp>
+                <TileCard key={i} tile={tile} />
               ))}
             </div>
           </>

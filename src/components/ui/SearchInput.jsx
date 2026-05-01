@@ -1,33 +1,37 @@
 "use client";
 
-import React, { useState } from "react";
-import { HiSearch } from "react-icons/hi";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
 
-const SearchInput = () => {
-  const [search, setSearch] = useState();
+export default function SearchInput({ defaultValue = "" }) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [value, setValue] = useState(defaultValue);
+
+  const handleChange = (e) => {
+    const search = e.target.value;
+    setValue(search);
+
+    const category = searchParams.get("category") || "";
+    const params = new URLSearchParams();
+    if (search) params.set("search", search);
+    if (category) params.set("category", category);
+
+    router.replace(`/all-tiles?${params.toString()}`);
+  };
+
   return (
-    <div>
-      {/* Search */}
-      <div className="relative max-w-lg">
-        <HiSearch
-          className="absolute left-4 top-1/2 -translate-y-1/2"
-          size={17}
-          style={{ color: "rgba(255,255,255,0.4)" }}
-        />
-        <input
-          type="text"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search by name, material, style..."
-          className="w-full pl-11 pr-5 py-3.5 rounded-xl text-sm text-white outline-none"
-          style={{
-            background: "rgba(255,255,255,0.08)",
-            border: "1px solid rgba(255,255,255,0.15)",
-          }}
-        />
-      </div>
-    </div>
+    <input
+      type="text"
+      value={value}
+      onChange={handleChange}
+      placeholder="Search tiles..."
+      className="w-full px-4 py-3 rounded-xl text-sm outline-none"
+      style={{
+        background: "rgba(255,255,255,0.08)",
+        border: "1px solid rgba(255,255,255,0.15)",
+        color: "#fff",
+      }}
+    />
   );
-};
-
-export default SearchInput;
+}

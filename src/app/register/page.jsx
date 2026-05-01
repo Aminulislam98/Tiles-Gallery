@@ -18,7 +18,7 @@ import {
 import { Check } from "@gravity-ui/icons";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
 
-export default function RegisterPage() {
+export default function LoginPage() {
   const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
@@ -191,7 +191,7 @@ export default function RegisterPage() {
           </Link>
 
           <span
-            className="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-widest mb-5"
+            className="inline-block px-3 py-1 rounded text-xs font-semibold uppercase tracking-widest mb-5"
             style={{ background: "rgba(184,92,56,0.1)", color: "#B85C38" }}
           >
             New Account
@@ -335,7 +335,7 @@ export default function RegisterPage() {
             Already have an account?{" "}
             <Link
               href="/login"
-              className="font-semibold"
+              className="font-semibold underline-offset-4 transition-all hover:underline"
               style={{ color: "#B85C38" }}
             >
               Sign in

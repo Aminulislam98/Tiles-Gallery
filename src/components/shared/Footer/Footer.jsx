@@ -45,25 +45,35 @@ export default function Footer() {
               surfaces that tell stories — from Fez to Florence.
             </p>
             {/* Socials */}
+            {/* FaFacebookF, FaInstagram, FaXTwitter, FaLinkedinIn */}
             <div className="flex gap-2 mt-5">
-              {[FaFacebookF, FaInstagram, FaXTwitter, FaLinkedinIn].map(
-                (Icon, i) => (
-                  <a
-                    key={i}
-                    href="#"
-                    className="w-9 h-9 rounded-lg flex items-center justify-center transition-colors"
-                    style={{
-                      background: "rgba(255,255,255,0.06)",
-                      color: "rgba(255,255,255,0.4)",
-                    }}
-                  >
-                    <Icon size={13} />
-                  </a>
-                ),
-              )}
+              {[
+                {
+                  icon: FaFacebookF,
+                  href: "https://www.facebook.com/profile.php?id=100093614353745",
+                },
+                {
+                  icon: FaInstagram,
+                  href: "https://www.instagram.com/m_aminurr?igsh=dHIybnpvZmQ5cWly&utm_source=qr",
+                },
+                { icon: FaXTwitter, href: "https://twitter.com/aminurr" },
+                {
+                  icon: FaLinkedinIn,
+                  href: "https://www.linkedin.com/in/aminulislam98/",
+                },
+              ].map((social, i) => (
+                <Link
+                  key={i}
+                  href={social.href}
+                  className="w-9 h-9 rounded-lg flex items-center justify-center transition-colors bg-white/10 hover:bg-[#D4724D]"
+                >
+                  <social.icon size={13} />
+                </Link>
+              ))}
             </div>
           </div>
-
+          {/* "All Tiles", "Ceramic", "Zellige", "Natural Stone", "Marble",
+          "Outdoor", */}
           {/* Explore */}
           <div>
             <h5
@@ -74,26 +84,27 @@ export default function Footer() {
             </h5>
             <ul className="space-y-3 list-none p-0 m-0">
               {[
-                "All Tiles",
-                "Ceramic",
-                "Zellige",
-                "Natural Stone",
-                "Marble",
-                "Outdoor",
-              ].map((item) => (
-                <li key={item}>
+                { href: "/allTiles", label: "All Tiles" },
+                { href: "/allTiles?category=ceramic", label: "Ceramic" },
+                { href: "/allTiles?category=zellige", label: "Zellige" },
+                {
+                  href: "/allTiles?category=natural stone",
+                  label: "Natural Stone",
+                },
+                { href: "/allTiles?category=marble", label: "Marble" },
+                { href: "/allTiles?category=terracotta", label: "Outdoor" },
+              ].map(({ href, label }) => (
+                <li key={label}>
                   <Link
-                    href="/all-tiles"
-                    className="text-sm transition-colors hover:text-white"
-                    style={{ color: "rgba(255,255,255,0.45)" }}
+                    href={href}
+                    className="text-sm transition-colors hover:text-[#D4724D] text-[rgba(255,255,255,0.45)] "
                   >
-                    {item}
+                    {label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-
           {/* Company */}
           <div>
             <h5
@@ -108,8 +119,7 @@ export default function Footer() {
                   <li key={item}>
                     <Link
                       href="#"
-                      className="text-sm transition-colors hover:text-white"
-                      style={{ color: "rgba(255,255,255,0.45)" }}
+                      className="text-sm transition-colors hover:text-[#D4724D] text-[rgba(255,255,255,0.45)] "
                     >
                       {item}
                     </Link>
@@ -118,7 +128,6 @@ export default function Footer() {
               )}
             </ul>
           </div>
-
           {/* Contact */}
           <div>
             <h5
@@ -195,8 +204,7 @@ export default function Footer() {
               <Link
                 key={item}
                 href="#"
-                className="text-xs transition-colors hover:text-white"
-                style={{ color: "rgba(255,255,255,0.3)" }}
+                className="text-xs transition-colors hover:text-[#D4724D] text-[rgba(255,255,255,0.45)] "
               >
                 {item}
               </Link>

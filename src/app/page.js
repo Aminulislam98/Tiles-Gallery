@@ -65,7 +65,7 @@ export default async function HomePage() {
         />
 
         {/* Text */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 h-full flex flex-col justify-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 h-full flex flex-col justify-center">
           <div className="max-w-2xl">
             {/* Eyebrow */}
             <div className="flex items-center gap-3 mb-6">
@@ -122,16 +122,6 @@ export default async function HomePage() {
         </div>
 
         {/* Scroll hint */}
-        <div
-          className="absolute bottom-8 left-6 flex items-center gap-3 text-xs tracking-widest"
-          style={{ color: "rgba(255,255,255,0.4)" }}
-        >
-          <span>SCROLL</span>
-          <div
-            className="w-10 h-px"
-            style={{ background: "rgba(255,255,255,0.3)" }}
-          />
-        </div>
       </section>
 
       {/* ── MARQUEE ── */}
@@ -164,7 +154,7 @@ export default async function HomePage() {
 
       {/* ── FEATURED TILES ── */}
       <section className="py-24" style={{ background: "#F9F6F1" }}>
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4">
           <FadeUp>
             <div className="flex items-end justify-between mb-12">
               <div>
@@ -218,7 +208,7 @@ export default async function HomePage() {
           className="absolute inset-0"
           style={{ background: "rgba(15,14,12,0.72)" }}
         />
-        <div className="relative z-10 text-center px-6 max-w-2xl mx-auto">
+        <div className="relative z-10 text-center px-4 max-w-2xl mx-auto">
           <FadeUp>
             <p
               className="text-xs font-semibold uppercase tracking-widest mb-4"
@@ -296,7 +286,7 @@ export default async function HomePage() {
           className="absolute inset-0"
           style={{ background: "rgba(15,14,12,0.80)" }}
         />
-        <div className="relative z-10 max-w-xl mx-auto text-center px-6 py-24">
+        <div className="relative z-10 max-w-xl mx-auto text-center px-4 py-24">
           <FadeUp>
             <h2
               className="font-display font-light text-white leading-tight mb-4"

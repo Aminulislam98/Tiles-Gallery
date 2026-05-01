@@ -1,5 +1,28 @@
 @import "tailwindcss";
 @import "@heroui/styles";
+html {
+  scroll-behavior: smooth;
+}
+/* Scrollbar width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track — background */
+::-webkit-scrollbar-track {
+  background: #f9f6f1;
+}
+
+/* Thumb — the draggable part */
+::-webkit-scrollbar-thumb {
+  background: #b85c38;
+  border-radius: 99px;
+}
+
+/* Thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b85c38;
+}
 .reveal {
   opacity: 0;
   transform: translateY(30px);

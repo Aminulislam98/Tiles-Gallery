@@ -35,7 +35,7 @@ export default function Navbar({ dark = false }) {
         height: transparent ? "72px" : "60px",
       }}
     >
-      <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           {/* 2x2 coloured tile grid */}
@@ -61,12 +61,12 @@ export default function Navbar({ dark = false }) {
           {[
             { href: "/", label: "Home" },
             { href: "/allTiles", label: "All Tiles" },
-            { href: "/my-profile", label: "My Profile" },
+            { href: "/profile", label: "My Profile" },
           ].map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="px-4 py-2 text-sm font-medium rounded-lg transition-colors"
+                className="px-4 py-2 text-sm font-medium rounded-lg transition-colors "
                 style={{
                   color:
                     pathname === link.href
@@ -79,7 +79,7 @@ export default function Navbar({ dark = false }) {
                   background:
                     pathname === link.href
                       ? transparent
-                        ? "rgba(255,255,255,0.12)"
+                        ? "rgba(255,255,255,0.12) "
                         : "#E4DFD8"
                       : "transparent",
                 }}
@@ -145,11 +145,11 @@ export default function Navbar({ dark = false }) {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden p-2"
+          className="md:hidden p-2 px-0"
           onClick={() => setOpen(!open)}
           style={{ color: transparent ? "#fff" : "#0F0E0C" }}
         >
-          {open ? <HiX size={22} /> : <HiMenuAlt3 size={22} />}
+          {open ? <HiX size={28} /> : <HiMenuAlt3 size={30} />}
         </button>
       </div>
 

@@ -16,8 +16,9 @@ import {
   TextField,
 } from "@heroui/react";
 import { Check } from "@gravity-ui/icons";
+import { MdOutlineArrowRightAlt } from "react-icons/md";
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
@@ -190,138 +191,85 @@ export default function LoginPage() {
           </Link>
 
           <span
-            className="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-widest mb-5"
+            className="inline-block px-3 py-1 rounded text-xs font-semibold uppercase tracking-widest mb-5"
             style={{ background: "rgba(184,92,56,0.1)", color: "#B85C38" }}
           >
-            New Account
+            Welcome Back
           </span>
 
           <h1 className="font-display font-light leading-tight mb-2 text-[clamp(32px,5vw,42px)] text-[#0F0E0C] tracking-tight">
-            Create Account
+            Sign In
           </h1>
           <p className="text-sm font-light mb-8 text-[#8C8880]">
-            Join 12,000+ designers and tile enthusiasts.
+            Access your curated tile collection.
           </p>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
-            {/* Name */}
-            <div>
-              <label
-                className="block text-xs font-semibold mb-2"
-                style={{ color: "#3A3835" }}
-              >
-                Full Name
-              </label>
-              <input
-                type="text"
-                value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
-                placeholder="Your full name"
-                className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-colors"
-                style={{
-                  background: "#fff",
-                  border: "1.5px solid #E4DFD8",
-                  color: "#0F0E0C",
-                }}
-              />
-            </div>
+          {/* Form */}
+          <Form className="flex w-96 flex-col gap-4">
+            {/* onSubmit={onSubmit} */}
+            {/* name */}
 
-            {/* Email */}
-            <div>
-              <label
-                className="block text-xs font-semibold mb-2"
-                style={{ color: "#3A3835" }}
-              >
-                Email Address
-              </label>
-              <input
-                type="email"
-                value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
-                placeholder="you@example.com"
-                className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-colors"
-                style={{
-                  background: "#fff",
-                  border: "1.5px solid #E4DFD8",
-                  color: "#0F0E0C",
-                }}
-              />
-            </div>
-
-            {/* Photo URL */}
-            <div>
-              <label
-                className="block text-xs font-semibold mb-2"
-                style={{ color: "#3A3835" }}
-              >
-                Photo URL{" "}
-                <span style={{ color: "#8C8880", fontWeight: 400 }}>
-                  (optional)
-                </span>
-              </label>
-              <input
-                type="url"
-                value={form.photoUrl}
-                onChange={(e) => setForm({ ...form, photoUrl: e.target.value })}
-                placeholder="https://..."
-                className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-colors"
-                style={{
-                  background: "#fff",
-                  border: "1.5px solid #E4DFD8",
-                  color: "#0F0E0C",
-                }}
-              />
-            </div>
-
-            {/* Password */}
-            <div>
-              <label
-                className="block text-xs font-semibold mb-2"
-                style={{ color: "#3A3835" }}
-              >
-                Password
-              </label>
-              <div className="relative">
-                <input
-                  type={showPass ? "text" : "password"}
-                  value={form.password}
-                  onChange={(e) =>
-                    setForm({ ...form, password: e.target.value })
-                  }
-                  placeholder="Create a strong password"
-                  className="w-full px-4 py-3 pr-11 rounded-xl text-sm outline-none transition-colors"
-                  style={{
-                    background: "#fff",
-                    border: "1.5px solid #E4DFD8",
-                    color: "#0F0E0C",
-                  }}
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPass(!showPass)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2"
-                  style={{ color: "#8C8880" }}
-                >
-                  {showPass ? <HiEyeOff size={17} /> : <HiEye size={17} />}
-                </button>
-              </div>
-            </div>
-
-            {/* Submit */}
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full py-3.5 rounded-xl text-sm font-medium text-white mt-1 transition-opacity hover:opacity-80 disabled:opacity-50"
-              style={{ background: "#0F0E0C" }}
+            {/* email */}
+            <TextField
+              isRequired
+              name="email"
+              type="email"
+              validate={(value) => {
+                if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
+                  return "Please enter a valid email address";
+                }
+                return null;
+              }}
             >
-              {loading ? "Creating account…" : "Create Account →"}
-            </button>
-          </form>
+              <Label>Email</Label>
+              <Input
+                placeholder="john@example.com"
+                className="border border-[#E4DFD8] shadow-none focus:ring-2 focus:ring-[#B85C38]/50 focus:ring-offset-0 focus:ring-offset-transparent text-sm py-3"
+              />
+              <FieldError />
+            </TextField>
+
+            <TextField
+              isRequired
+              minLength={8}
+              name="password"
+              type="password"
+              validate={(value) => {
+                if (value.length < 8) {
+                  return "Password must be at least 8 characters";
+                }
+                if (!/[A-Z]/.test(value)) {
+                  return "Password must contain at least one uppercase letter";
+                }
+                if (!/[0-9]/.test(value)) {
+                  return "Password must contain at least one number";
+                }
+                return null;
+              }}
+            >
+              <Label>Password</Label>
+              <Input
+                placeholder="Enter your password"
+                className="border border-[#E4DFD8] shadow-none focus:ring-2 focus:ring-[#B85C38]/50 focus:ring-offset-0 focus:ring-offset-transparent text-sm py-3"
+              />
+
+              <FieldError />
+            </TextField>
+            <div className="flex gap-2">
+              <button
+                type="submit"
+                className="bg-black w-full py-3 rounded-xl text-sm font-medium text-white hover:bg-[#B85C38] transition-all duration-200 flex flex-row items-center justify-center gap-2 "
+              >
+                Create Account
+                <MdOutlineArrowRightAlt className="text-xl" />
+              </button>
+            </div>
+          </Form>
 
           {/* Divider */}
           <div className="flex items-center gap-3 my-5">
             <span className="flex-1 h-px bg-[#E4DFD8]" />
-            <span className="text-xs text-[#8C8880]">or sign up with</span>
+            <span className="text-xs text-[#8C8880]">or Continue with</span>
             <span className="flex-1 h-px bg-[#E4DFD8]" />
           </div>
 
@@ -335,13 +283,13 @@ export default function LoginPage() {
 
           {/* Login link */}
           <p className="text-center mt-6 text-sm" style={{ color: "#8C8880" }}>
-            Already have an account?{" "}
+            Don't have an account?{" "}
             <Link
-              href="/login"
-              className="font-semibold"
+              href="/register"
+              className="font-semibold underline-offset-4 transition-all hover:underline"
               style={{ color: "#B85C38" }}
             >
-              Sign in
+              Create one
             </Link>
           </p>
         </div>

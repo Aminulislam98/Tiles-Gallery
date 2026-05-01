@@ -13,7 +13,7 @@ const CategoryButton = ({ cat }) => {
   return (
     <div>
       <Link
-        href={cat?.slug ? `?category=${cat.name.toLowerCase()}` : "/allTiles"}
+        href={cat?.slug ? `?category=${cat.slug.toLowerCase()}` : "/allTiles"}
         key={cat.id}
         // onClick={() => setActiveCategory(cat)}
         className={`uppercase tracking-widest hover:text-[#D4724D] px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors flex justify-center items-center ${isActive ? "text-white bg-[#8C8880] hover:text-white" : "text-[#0F0E0C] transparent  "}`}

@@ -19,14 +19,15 @@ const getTilesRes = async () => {
 export default async function AllTilesPage({ searchParams }) {
   const sp = await searchParams;
 
-  const category = sp.category || "";
-  const title = sp.title || "";
+  const category = (await sp.category) || "";
+  const title = (await sp.title) || "";
 
   const allTilesData = await getTilesRes();
 
   const allTiles = allTilesData.filter((tile) => {
     const matchCategory = category
-      ? tile?.category?.toLowerCase() === category?.toLowerCase()
+      ? tile?.category?.toLowerCase().replace(" ", "-") ===
+        category?.toLowerCase()
       : true;
     const matchSearch = title
       ? tile?.title?.toLowerCase().includes(title?.toLowerCase())
@@ -53,7 +54,7 @@ export default async function AllTilesPage({ searchParams }) {
     {
       id: "cat-4",
       name: "Natural Stone",
-      slug: "natural stone",
+      slug: "natural-stone",
     },
     {
       id: "cat-1",

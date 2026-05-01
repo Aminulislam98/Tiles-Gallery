@@ -9,19 +9,30 @@ import CategoryButton from "@/components/ui/CategoryButton";
 import SearchInput from "@/components/ui/SearchInput";
 import { Suspense } from "react";
 
-export default async function AllTilesPage({ searchParams }) {
-  const { search, category } = await searchParams;
-  console.log("this is search:", search, "this is category:", category);
-
-  const tilesRes = await fetch(
-    "https://tiles-gallery-server-1.onrender.com/tiles",
+const getTilesRes = async () => {
+  const response = await fetch(
+    `https://tiles-gallery-server-1.onrender.com/tiles`,
   );
-  const allTiles = await tilesRes.json();
+  return await response.json();
+};
 
-  // const categoryRes = await fetch(
-  //   "https://tiles-gallery-server-1.onrender.com/category",
-  // );
-  // const categories = await categoryRes.json();
+export default async function AllTilesPage({ searchParams }) {
+  const sp = await searchParams;
+
+  const category = sp.category || "";
+  const title = sp.title || "";
+
+  const allTilesData = await getTilesRes();
+
+  const allTiles = allTilesData.filter((tile) => {
+    const matchCategory = category
+      ? tile.category.toLowerCase() === category.toLowerCase()
+      : true;
+    const matchSearch = title
+      ? tile.title.toLowerCase().includes(title.toLowerCase())
+      : true;
+    return matchCategory && matchSearch;
+  });
 
   const categories = [
     {
@@ -65,12 +76,6 @@ export default async function AllTilesPage({ searchParams }) {
       slug: "encaustic",
     },
   ];
-
-  const filterTiles = category
-    ? allTiles.filter(
-        (tiles) => tiles.category.toLowerCase() == category.toLowerCase(),
-      )
-    : allTiles;
 
   return (
     <>
@@ -140,7 +145,7 @@ export default async function AllTilesPage({ searchParams }) {
 
       {/* Grid */}
       <section className="max-w-7xl w-full mx-auto px-6 py-14">
-        {filterTiles.length === 0 ? (
+        {allTiles.length === 0 ? (
           <div className="text-center py-24">
             <p
               className="font-display text-3xl mb-2"
@@ -155,7 +160,7 @@ export default async function AllTilesPage({ searchParams }) {
         ) : (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filterTiles.map((tile, i) => (
+              {allTiles.map((tile, i) => (
                 <TileCard key={i} tile={tile} />
               ))}
             </div>

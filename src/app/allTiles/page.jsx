@@ -6,11 +6,10 @@ import Navbar from "@/components/shared/Navbar/Navbar";
 import TileCard from "@/components/TileCard";
 import Footer from "@/components/shared/Footer/Footer";
 import CategoryButton from "@/components/ui/CategoryButton";
-import SearchInput from "@/components/ui/SearchInput";
-import { Suspense } from "react";
 
 export default async function AllTilesPage({ searchParams }) {
   const { search, category } = await searchParams;
+  console.log("this is search:", search, "this is category:", category);
 
   const tilesRes = await fetch(
     "https://tiles-gallery-server-1.onrender.com/tiles",
@@ -78,20 +77,11 @@ export default async function AllTilesPage({ searchParams }) {
   //   });
   // }, [search, activeCategory]);
 
-  // const filterTiles = category
-  //   ? allTiles.filter(
-  //       (tiles) => tiles.category.toLowerCase() == category.toLowerCase(),
-  //     )
-  //   : allTiles;
-  const filterTiles = allTiles.filter((tile) => {
-    const matchCategory = category
-      ? tile.category.toLowerCase() === category.toLowerCase()
-      : true;
-    const matchSearch = search
-      ? tile.title.toLowerCase().includes(search.toLowerCase())
-      : true;
-    return matchCategory && matchSearch;
-  });
+  const filterTiles = category
+    ? allTiles.filter(
+        (tiles) => tiles.category.toLowerCase() == category.toLowerCase(),
+      )
+    : allTiles;
 
   return (
     <>
@@ -138,9 +128,9 @@ export default async function AllTilesPage({ searchParams }) {
             >
               Browse our complete collection of premium artisan tiles.
             </p>
-            <Suspense fallback={<div>Loading...</div>}>
+            {/* <Suspense fallback={<div>Loading...</div>}>
               <SearchInput defaultValue={search || ""} />
-            </Suspense>
+            </Suspense> */}
           </div>
         </div>
 

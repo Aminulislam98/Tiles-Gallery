@@ -54,11 +54,6 @@ export default function LoginPage() {
       provider: "google",
       callbackURL: "/",
     });
-    if (data && !error) {
-      toast.success("Logged in successfully!");
-    } else {
-      toast.error("Error logging in with Google");
-    }
   };
 
   return (

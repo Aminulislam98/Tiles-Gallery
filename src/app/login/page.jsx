@@ -29,22 +29,18 @@ export default function RegisterPage() {
       password,
       callbackURL: "/",
     });
-    if (!error) {
-      toast.success("Signed in successfully!");
-    } else {
+    if (error) {
       toast.error("Error signing in: " + error.message);
+      return;
     }
+    toast.success("Signed in successfully!");
   };
 
   const signInByGoogle = async () => {
     const data = await authClient.signIn.social({
       provider: "google",
+      callbackURL: "/",
     });
-    if (data) {
-      toast.success("Logged in successfully!");
-    } else {
-      toast.error("Error logging in with Google");
-    }
   };
 
   return (

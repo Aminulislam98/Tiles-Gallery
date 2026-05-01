@@ -1,8 +1,6 @@
 @import "tailwindcss";
 @import "@heroui/styles";
-html {
-  scroll-behavior: smooth;
-}
+
 /* Scrollbar width */
 ::-webkit-scrollbar {
   width: 6px;

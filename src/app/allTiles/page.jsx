@@ -26,10 +26,10 @@ export default async function AllTilesPage({ searchParams }) {
 
   const allTiles = allTilesData.filter((tile) => {
     const matchCategory = category
-      ? tile.category.toLowerCase() === category.toLowerCase()
+      ? tile?.category?.toLowerCase() === category?.toLowerCase()
       : true;
     const matchSearch = title
-      ? tile.title.toLowerCase().includes(title.toLowerCase())
+      ? tile?.title?.toLowerCase().includes(title?.toLowerCase())
       : true;
     return matchCategory && matchSearch;
   });

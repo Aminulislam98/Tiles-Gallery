@@ -277,7 +277,7 @@ export default function BlogPage() {
       {/* ── CTA — full photo background ── */}
       <section className="relative py-32 text-center overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1800&q=85"
+          src="https://www.inframarketstores.com/assets/images/tiles/banner-tiles-4.jpg"
           alt="Indoor tile floor"
           fill
           className="object-cover"

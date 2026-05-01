@@ -115,7 +115,7 @@ export default function CookiesPage() {
       <section className="relative pt-[60px]">
         <div className="relative h-[420px] md:h-[480px]">
           <Image
-            src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=1800&q=90"
+            src="https://www.hrjohnsonindia.com/assets/images/blog/marble-stones.jpg"
             alt="Cookie Policy"
             fill
             priority

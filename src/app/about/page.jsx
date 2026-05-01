@@ -14,22 +14,22 @@ const team = [
   {
     name: "Isabelle Fontaine",
     role: "Founder & Creative Director",
-    img: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=400&q=80",
+    img: "https://www.shutterstock.com/image-photo/professional-salesman-holding-clipboard-showing-260nw-2683888755.jpg",
   },
   {
     name: "Rami Al-Haddad",
     role: "Head of Sourcing",
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
+    img: "https://www.shutterstock.com/image-photo/confident-bearded-man-store-employee-260nw-2736783527.jpg",
   },
   {
     name: "Priya Menon",
     role: "Lead Designer",
-    img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
+    img: "https://media.istockphoto.com/id/1729966342/photo/happy-man-working-at-a-factory-making-a-ceramic-tile.jpg?s=612x612&w=0&k=20&c=hP8E08RTU5mu1pWzfUu4r9_bwewzPDcpaRHNWaPxE5g=",
   },
   {
     name: "Thomas Breuer",
     role: "Operations Director",
-    img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80",
+    img: "https://img.freepik.com/premium-photo/experienced-repairman-man-placing-large-size-tiles_486781-29.jpg",
   },
 ];
 
@@ -316,7 +316,7 @@ export default function AboutPage() {
             {/* Large left — indoor floor */}
             <div className="relative col-span-2 row-span-2 rounded-2xl overflow-hidden group">
               <Image
-                src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=85"
+                src="https://floorexpress.co.uk/wp-content/uploads/2025/06/Office-Floor-Tiles.webp"
                 alt="Indoor tile floor"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -338,7 +338,7 @@ export default function AboutPage() {
             {/* Top right — kitchen */}
             <div className="relative col-span-2 rounded-2xl overflow-hidden group">
               <Image
-                src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80"
+                src="https://m2.tilemountain.co.uk/media/catalog/product/cache/f8158826193ba5faa8b862a9bd1eb9e9/o/s/osborne-blue-victorian-patterned--matt-ceramic-floor-tile-kitchen-floor-2300-1.jpg"
                 alt="Kitchen tiles"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -356,7 +356,7 @@ export default function AboutPage() {
             {/* Bottom right — bathroom */}
             <div className="relative rounded-2xl overflow-hidden group">
               <Image
-                src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80"
+                src="https://www.arkoflooring.com/cdn/shop/articles/bathroom-floor-tile.png?v=1768840247"
                 alt="Bathroom tiles"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -374,7 +374,7 @@ export default function AboutPage() {
             {/* Bottom right — outdoor */}
             <div className="relative rounded-2xl overflow-hidden group">
               <Image
-                src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80"
+                src="https://amazingspace.uk/cdn/shop/products/large-p11194-chatsworth-dark-grey-600x600mm-_-p11195-chatsworth-dark-grey-600x900mm-rs_1_1.jpg?v=1653933154"
                 alt="Outdoor tiles"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"

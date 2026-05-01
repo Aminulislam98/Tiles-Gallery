@@ -9,7 +9,6 @@ const CategoryButton = ({ cat }) => {
   const isActive = cat.slug
     ? currentCategory === cat.slug
     : currentCategory === null;
-  console.log(isActive);
 
   return (
     <div>

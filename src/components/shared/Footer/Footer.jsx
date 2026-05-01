@@ -1,9 +1,13 @@
+"use client";
+import { p } from "framer-motion/client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { HiMail, HiPhone, HiLocationMarker } from "react-icons/hi";
 
 export default function Footer() {
+  const pathName = usePathname();
   return (
     <footer style={{ background: "#0F0E0C", color: "rgba(255,255,255,0.5)" }}>
       <div className="max-w-7xl mx-auto px-6 pt-16 pb-8">
@@ -72,8 +76,7 @@ export default function Footer() {
               ))}
             </div>
           </div>
-          {/* "All Tiles", "Ceramic", "Zellige", "Natural Stone", "Marble",
-          "Outdoor", */}
+
           {/* Explore */}
           <div>
             <h5
@@ -92,12 +95,12 @@ export default function Footer() {
                   label: "Natural Stone",
                 },
                 { href: "/allTiles?category=marble", label: "Marble" },
-                { href: "/allTiles?category=terracotta", label: "Outdoor" },
+                { href: "/allTiles?category=terracotta", label: "Terracotta" },
               ].map(({ href, label }) => (
                 <li key={label}>
                   <Link
                     href={href}
-                    className="text-sm transition-colors hover:text-[#D4724D] text-[rgba(255,255,255,0.45)] "
+                    className={`text-sm transition-colors hover:text-[#D4724D] text-[rgba(255,255,255,0.45)] `}
                   >
                     {label}
                   </Link>
@@ -114,18 +117,28 @@ export default function Footer() {
               Company
             </h5>
             <ul className="space-y-3 list-none p-0 m-0">
-              {["About Us", "Projects", "Blog", "Careers", "Privacy"].map(
-                (item) => (
-                  <li key={item}>
-                    <Link
-                      href="#"
-                      className="text-sm transition-colors hover:text-[#D4724D] text-[rgba(255,255,255,0.45)] "
-                    >
-                      {item}
-                    </Link>
-                  </li>
-                ),
-              )}
+              {[
+                { href: "/about", label: "About Us" },
+                { href: "/careers", label: "Careers" },
+                { href: "/blog", label: "Blog" },
+                {
+                  href: "/project",
+                  label: "Projects",
+                },
+                {
+                  href: "/privacy",
+                  label: "Privacy Policy",
+                },
+              ].map((item) => (
+                <li key={item.label + item.href}>
+                  <Link
+                    href={item.href}
+                    className={`text-sm transition-colors hover:text-[#D4724D]  ${pathName === item.href ? "text-[#D4724D]" : "text-[rgba(255,255,255,0.45)]"}`}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           {/* Contact */}
@@ -214,13 +227,26 @@ export default function Footer() {
             © 2025 Tiles Gallery. All rights reserved.
           </p>
           <div className="flex gap-5">
-            {["Privacy Policy", "Terms", "Cookies"].map((item) => (
+            {[
+              {
+                href: "/privacy",
+                label: "Privacy Policy",
+              },
+              {
+                href: "/terms",
+                label: "Terms",
+              },
+              {
+                href: "/cookies",
+                label: "Cookies",
+              },
+            ].map((item) => (
               <Link
-                key={item}
-                href="#"
+                key={item.href + item.label}
+                href={item.href}
                 className="text-xs transition-colors hover:text-[#D4724D] text-[rgba(255,255,255,0.45)] "
               >
-                {item}
+                {item.label}
               </Link>
             ))}
           </div>
@@ -229,3 +255,4 @@ export default function Footer() {
     </footer>
   );
 }
+// "Privacy Policy", "Terms", "Cookies"

@@ -27,7 +27,6 @@ export default function Navbar({ dark = false }) {
     isPending, //loading state
     error, //error object
   } = authClient.useSession();
-  console.log(session?.user);
 
   // name
   const userName = session?.user?.name || "Guest";

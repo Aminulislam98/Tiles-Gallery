@@ -7,16 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { HiPencil, HiMail, HiCalendar, HiStar } from "react-icons/hi";
 
-// TODO: replace with real BetterAuth session
-const mockUser = {
-  name: "Aminul Islam",
-  email: "aminul@example.com",
-  initials: "AI",
-  memberSince: "January 2025",
-  accountType: "Premium",
-  savedTiles: 12,
-};
-
 export default async function MyProfilePage() {
   const session = await auth.api.getSession({
     headers: await headers(), // you need to pass the headers object.

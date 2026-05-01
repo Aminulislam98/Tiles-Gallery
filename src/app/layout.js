@@ -1,6 +1,7 @@
 import { Cormorant_Garamond, Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar/Navbar";
+import { Toaster } from "react-hot-toast";
 
 export const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -26,7 +27,10 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${cormorant.className} ${outfit.className} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <Toaster position="top-left" />
+      </body>
     </html>
   );
 }

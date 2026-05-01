@@ -11,8 +11,6 @@ import Image from "next/image";
 import TileCard from "@/components/TileCard";
 import Footer from "@/components/shared/Footer/Footer";
 
-// const featured = tilesData.slice(0, 4);
-
 const marqueeItems = [
   "New Arrivals: Zellige Ocean Blue",
   "Weekly Feature: Modern Geometric Patterns",
@@ -37,7 +35,6 @@ export default async function HomePage() {
   return (
     <>
       <Navbar dark />
-
       {/* ── HERO ── */}
       <section className="relative h-screen min-h-170 overflow-hidden">
         <Image

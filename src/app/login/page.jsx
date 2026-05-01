@@ -15,35 +15,36 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
-import { Check } from "@gravity-ui/icons";
+
 import { MdOutlineArrowRightAlt } from "react-icons/md";
+import { authClient } from "@/lib/auth-client";
 
 export default function RegisterPage() {
-  const [showPass, setShowPass] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    photoUrl: "",
-    password: "",
-  });
-
-  const handleSubmit = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.password) {
-      toast.error("Please fill in all required fields.");
-      return;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const { data, error } = await authClient.signIn.email({
+      email,
+      password,
+      callbackURL: "/",
+    });
+    if (!error) {
+      toast.success("Signed in successfully!");
+    } else {
+      toast.error("Error signing in: " + error.message);
     }
-    if (form.password.length < 6) {
-      toast.error("Password must be at least 6 characters.");
-      return;
-    }
-    setLoading(true);
+  };
 
-    // TODO: BetterAuth signUp
-    await new Promise((r) => setTimeout(r, 1000));
-    toast.success("Account created! Please sign in.");
-    setLoading(false);
+  const signInByGoogle = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+    if (data) {
+      toast.success("Logged in successfully!");
+    } else {
+      toast.error("Error logging in with Google");
+    }
   };
 
   return (
@@ -205,7 +206,7 @@ export default function RegisterPage() {
           </p>
 
           {/* Form */}
-          <Form className="flex w-96 flex-col gap-4">
+          <Form onSubmit={onSubmit} className="flex w-96 flex-col gap-4">
             {/* onSubmit={onSubmit} */}
             {/* name */}
 
@@ -275,8 +276,8 @@ export default function RegisterPage() {
 
           {/* Google */}
           <button
-            onClick={() => toast("Google signup — connect BetterAuth")}
-            className="w-full py-3 rounded-xl text-sm font-medium flex items-center justify-center gap-3 transition-opacity hover:opacity-80 bg-white border border-[#E4DFD8] text-[#3A3835]"
+            onClick={() => signInByGoogle()}
+            className="w-full py-3 rounded-xl text-sm font-medium flex items-center justify-center gap-3 transition-opacity hover:opacity-80 bg-white border border-[#E4DFD8] text-[#3A3835] cursor-pointer"
           >
             <FcGoogle size={18} /> Continue with Google
           </button>

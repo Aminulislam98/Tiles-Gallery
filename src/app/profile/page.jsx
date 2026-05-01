@@ -1,5 +1,9 @@
 import Footer from "@/components/shared/Footer/Footer";
 import Navbar from "@/components/shared/Navbar/Navbar";
+import { auth } from "@/lib/auth";
+import { div } from "framer-motion/client";
+import { headers } from "next/headers";
+import Image from "next/image";
 import Link from "next/link";
 import { HiPencil, HiMail, HiCalendar, HiStar } from "react-icons/hi";
 
@@ -13,7 +17,26 @@ const mockUser = {
   savedTiles: 12,
 };
 
-export default function MyProfilePage() {
+export default async function MyProfilePage() {
+  const session = await auth.api.getSession({
+    headers: await headers(), // you need to pass the headers object.
+  });
+  const { name, email, image } = session.user;
+
+  const loginDate = new Date(session.session.createdAt).toLocaleDateString(
+    "en-GB",
+    {
+      dateStyle: "medium",
+      timeZone: "Europe/London",
+    },
+  );
+
+  const initials = name
+    .trim()
+    .split(/\s+/)
+    .map((word) => word[0].toUpperCase())
+    .join("");
+
   return (
     <>
       <Navbar />
@@ -28,15 +51,27 @@ export default function MyProfilePage() {
             style={{ background: "#fff", border: "1px solid #E4DFD8" }}
           >
             {/* Avatar */}
-            <div
-              className="w-24 h-24 rounded-full flex items-center justify-center text-white font-display text-4xl font-medium shrink-0"
-              style={{
-                background: "linear-gradient(135deg, #B85C38, #8A3D22)",
-                boxShadow: "0 0 0 4px #F9F6F1, 0 0 0 6px #B85C38",
-              }}
-            >
-              {mockUser.initials}
-            </div>
+            {image ? (
+              <div className="bg-[#B85C38] p-1 rounded-full">
+                <Image
+                  src={image}
+                  alt={name}
+                  width={96}
+                  height={96}
+                  className="w-24 h-24 rounded-full object-cover shrink-0"
+                />
+              </div>
+            ) : (
+              <div
+                className="w-24 h-24 rounded-full flex items-center justify-center text-white font-display text-4xl font-medium shrink-0"
+                style={{
+                  background: "linear-gradient(135deg, #B85C38, #8A3D22)",
+                  boxShadow: "0 0 0 4px #F9F6F1, 0 0 0 6px #B85C38",
+                }}
+              >
+                {initials}
+              </div>
+            )}
 
             {/* Info */}
             <div className="flex-1">
@@ -44,13 +79,13 @@ export default function MyProfilePage() {
                 className="font-display text-2xl font-medium leading-tight mb-1"
                 style={{ color: "#0F0E0C" }}
               >
-                {mockUser.name}
+                {name}
               </h1>
               <p
                 className="text-sm mb-3 flex items-center gap-1.5"
                 style={{ color: "#8C8880" }}
               >
-                <HiMail size={13} /> {mockUser.email}
+                <HiMail size={13} /> {email}
               </p>
               <div className="flex flex-wrap gap-2">
                 <span
@@ -60,19 +95,19 @@ export default function MyProfilePage() {
                     color: "#B85C38",
                   }}
                 >
-                  {mockUser.accountType}
+                  Premium
                 </span>
-                <span
+                {/* <span
                   className="px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1"
                   style={{ background: "#E4DFD8", color: "#8C8880" }}
                 >
                   <HiStar size={11} /> {mockUser.savedTiles} Saved Tiles
-                </span>
+                </span> */}
                 <span
                   className="px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1"
                   style={{ background: "#E4DFD8", color: "#8C8880" }}
                 >
-                  <HiCalendar size={11} /> Since {mockUser.memberSince}
+                  <HiCalendar size={11} /> Since {loginDate}
                 </span>
               </div>
             </div>
@@ -102,10 +137,10 @@ export default function MyProfilePage() {
               Account Information
             </p>
             {[
-              ["Full Name", mockUser.name],
-              ["Email Address", mockUser.email],
-              ["Member Since", mockUser.memberSince],
-              ["Account Type", mockUser.accountType],
+              ["Name", name],
+              ["Email", email],
+              ["Member Since", loginDate],
+              ["Account Type", "Premium"],
             ].map(([label, value]) => (
               <div
                 key={label}
@@ -141,7 +176,7 @@ export default function MyProfilePage() {
                 </label>
                 <input
                   type="text"
-                  defaultValue={mockUser.name}
+                  defaultValue={name}
                   className="w-full px-4 py-3 rounded-xl text-sm outline-none"
                   style={{
                     background: "#F9F6F1",
@@ -160,6 +195,7 @@ export default function MyProfilePage() {
                 <input
                   type="url"
                   placeholder="https://..."
+                  defaultValue={image}
                   className="w-full px-4 py-3 rounded-xl text-sm outline-none"
                   style={{
                     background: "#F9F6F1",

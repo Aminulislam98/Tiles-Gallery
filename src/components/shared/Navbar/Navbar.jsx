@@ -4,18 +4,18 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
-
-// dark={true}  → transparent navbar, use on Home page only
-// dark={false} → white navbar, use on all other pages
+import { authClient } from "@/lib/auth-client";
+import { RiLogoutBoxLine } from "react-icons/ri";
+import LogoutModal from "@/components/ui/LogoutConfirm";
+import Image from "next/image";
+import { Avatar } from "@heroui/react";
+import { i, u } from "framer-motion/client";
 
 export default function Navbar({ dark = false }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-
-  //   TODO: replace with real auth state
-  const isLoggedIn = false;
-  const user = { name: "Aminul", initials: "AI" };
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 60);
@@ -24,6 +24,20 @@ export default function Navbar({ dark = false }) {
   }, []);
 
   const transparent = dark && !scrolled;
+
+  const {
+    data: session,
+    isPending, //loading state
+    error, //error object
+  } = authClient.useSession();
+
+  // name
+  const userName = session?.user?.name || "Guest";
+  const initials = userName
+    .trim()
+    .split(/\s+/)
+    .map((word) => word[0].toUpperCase())
+    .join("");
 
   return (
     <nav
@@ -92,31 +106,98 @@ export default function Navbar({ dark = false }) {
 
         {/* Right side */}
         <div className="hidden md:flex items-center gap-3">
-          {isLoggedIn ? (
+          {session ? (
             <>
               {/* User chip */}
               <Link
-                href="/my-profile"
-                className="flex items-center gap-2 px-3 py-1.5 rounded-full"
-                style={{ background: "#E4DFD8" }}
+                href="/profile"
+                className="group transition-all duration-200 hover:scale-[1.02]"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  padding: "2px",
+                  borderRadius: "9999px",
+                  background:
+                    "linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0.1))",
+                  border: "1px solid rgba(255,255,255,0.5)",
+                  boxShadow:
+                    "0 4px 16px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6)",
+                  backdropFilter: "blur(24px)",
+                  WebkitBackdropFilter: "blur(24px)",
+                }}
               >
-                <div
-                  className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-semibold"
-                  style={{ background: "#B85C38" }}
-                >
-                  {user.initials}
+                <div className="flex items-center rounded-full overflow-hidden">
+                  <Avatar
+                    className="w-8 h-8 text-[11px] font-bold flex-shrink-0"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, #D4724D 0%, #B85C38 60%, #96421E 100%)",
+                    }}
+                  >
+                    <Avatar.Image
+                      src={session?.user?.image}
+                      alt={userName}
+                      className="w-full h-full object-cover"
+                    />
+                    <Avatar.Fallback className="text-white text-[11px] font-bold">
+                      {initials}
+                    </Avatar.Fallback>
+                  </Avatar>
+
+                  <span
+                    className="max-w-0 group-hover:max-w-[120px] overflow-hidden
+                 transition-all duration-300 ease-out
+                 text-xs font-semibold whitespace-nowrap
+                 group-hover:pl-2 group-hover:pr-3"
+                    style={{
+                      color: transparent ? "rgba(255,255,255,0.95)" : "#1A1714",
+                    }}
+                  >
+                    {userName}
+                  </span>
                 </div>
-                <span className="text-sm font-medium text-[#0F0E0C] pr-1">
-                  {user.name}
-                </span>
               </Link>
               {/* Logout */}
               <button
-                className="px-4 py-2 text-sm font-medium rounded-lg border transition-colors"
-                style={{ borderColor: "#CFC9C0", color: "#8C8880" }}
+                onClick={() => setIsOpen(true)}
+                className="flex items-center  cursor-pointer transition-all duration-200 hover:scale-[1.02]"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  padding: "2px 10px 2px 2px", // same padding as profile pill
+                  borderRadius: "9999px",
+                  background:
+                    "linear-gradient(135deg, rgba(255,255,255,0.35), rgba(255,255,255,0.1))",
+                  border: "1px solid rgba(192,57,43,0.3)",
+                  backdropFilter: "blur(24px)",
+                  WebkitBackdropFilter: "blur(24px)",
+                  boxShadow:
+                    "0 4px 16px rgba(192,57,43,0.12), inset 0 1px 0 rgba(255,255,255,0.6)",
+                }}
               >
-                Logout
+                {/* Icon circle — same size as avatar w-8 h-8 */}
+                <div
+                  className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, rgba(220,53,53,0.15), rgba(180,30,30,0.08))",
+                    border: "1px solid rgba(192,57,43,0.2)",
+                  }}
+                >
+                  <RiLogoutBoxLine size={14} style={{ color: "#C0392B" }} />
+                </div>
+
+                {/* Text */}
+                <span
+                  className="text-xs font-semibold pl-2"
+                  style={{
+                    color: transparent ? "black" : "#C0392B",
+                  }}
+                >
+                  Sign out
+                </span>
               </button>
+              <LogoutModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
             </>
           ) : (
             <>
@@ -145,7 +226,7 @@ export default function Navbar({ dark = false }) {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden p-2 px-0"
+          className="md:hidden p-2 px-0 "
           onClick={() => setOpen(!open)}
           style={{ color: transparent ? "#fff" : "#0F0E0C" }}
         >

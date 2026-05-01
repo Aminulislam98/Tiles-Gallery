@@ -1,13 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FcGoogle } from "react-icons/fc";
 import { HiEye, HiEyeOff } from "react-icons/hi";
-import toast from "react-hot-toast";
+
 import {
-  Button,
   Description,
   FieldError,
   Form,
@@ -17,33 +15,50 @@ import {
 } from "@heroui/react";
 import { Check } from "@gravity-ui/icons";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
+import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
-  const [showPass, setShowPass] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    photoUrl: "",
-    password: "",
-  });
-
-  const handleSubmit = async (e) => {
+  const router = useRouter();
+  const onSubmit = async (e) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.password) {
-      toast.error("Please fill in all required fields.");
-      return;
-    }
-    if (form.password.length < 6) {
-      toast.error("Password must be at least 6 characters.");
-      return;
-    }
-    setLoading(true);
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const photoUlr = e.target.photoUrl.value;
+    const password = e.target.password.value;
 
-    // TODO: BetterAuth signUp
-    await new Promise((r) => setTimeout(r, 1000));
-    toast.success("Account created! Please sign in.");
-    setLoading(false);
+    console.log(name, email, photoUlr, password);
+
+    const { data, error } = await authClient.signUp.email(
+      {
+        name,
+        email,
+        photoUlr,
+        password,
+      },
+      {
+        onSuccess: () => {
+          router.push("/");
+        },
+      },
+    );
+    if (!error) {
+      toast.success("Account created successfully!");
+    } else {
+      toast.error("Error creating account: " + error.message);
+    }
+  };
+  const signInByGoogle = async () => {
+    const { data, error } = await authClient.signIn.social({
+      provider: "google",
+      callbackURL: "/",
+    });
+    if (data && !error) {
+      toast.success("Logged in successfully!");
+    } else {
+      toast.error("Error logging in with Google");
+    }
   };
 
   return (
@@ -104,6 +119,7 @@ export default function LoginPage() {
           <div className="grid grid-cols-2 gap-4 flex-1 min-h-[160px]">
             <div className="relative rounded-2xl overflow-hidden">
               <Image
+                loading="eager"
                 src="https://images.unsplash.com/photo-1701251786408-d0320ecaad8d?w=800&q=85"
                 alt="Terracotta"
                 fill
@@ -120,6 +136,7 @@ export default function LoginPage() {
             </div>
             <div className="relative rounded-2xl overflow-hidden">
               <Image
+                loading="eager"
                 src="https://images.unsplash.com/photo-1732831627964-f6fc7157aebd?w=800&q=85"
                 alt="Mosaic"
                 fill
@@ -205,8 +222,7 @@ export default function LoginPage() {
           </p>
 
           {/* Form */}
-          <Form className="flex w-96 flex-col gap-4">
-            {/* onSubmit={onSubmit} */}
+          <Form onSubmit={onSubmit} className="flex w-96 flex-col gap-4">
             {/* name */}
             <TextField
               isRequired
@@ -250,19 +266,7 @@ export default function LoginPage() {
               <FieldError />
             </TextField>
             {/* Photo url */}
-            <TextField
-              name="photoUrl"
-              type="text"
-              validate={(value) => {
-                if (
-                  value &&
-                  !/^https?:\/\/.+\.(jpg|jpeg|png|gif|webp)$/i.test(value)
-                ) {
-                  return "Please enter a valid image URL (jpg, png, gif, webp)";
-                }
-                return null;
-              }}
-            >
+            <TextField name="photoUrl" type="text">
               <Label>
                 Photo URL{" "}
                 <span className="text-xs text-gray-500 ">(optional)</span>
@@ -324,8 +328,8 @@ export default function LoginPage() {
 
           {/* Google */}
           <button
-            onClick={() => toast("Google signup — connect BetterAuth")}
-            className="w-full py-3 rounded-xl text-sm font-medium flex items-center justify-center gap-3 transition-opacity hover:opacity-80 bg-white border border-[#E4DFD8] text-[#3A3835]"
+            onClick={() => signInByGoogle()}
+            className="w-full py-3 rounded-xl text-sm font-medium flex items-center justify-center gap-3 cursor-pointer transition-opacity hover:opacity-80 bg-white border border-[#E4DFD8] text-[#3A3835]"
           >
             <FcGoogle size={18} /> Continue with Google
           </button>

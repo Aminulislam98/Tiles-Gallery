@@ -144,7 +144,7 @@ export default async function AllTilesPage({ searchParams }) {
       </section>
 
       {/* Grid */}
-      <section className="max-w-7xl w-full mx-auto px-6 py-14">
+      <section className="max-w-7xl w-full mx-auto px-3 py-14">
         {allTiles.length === 0 ? (
           <div className="text-center py-24">
             <p
@@ -159,7 +159,7 @@ export default async function AllTilesPage({ searchParams }) {
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
               {allTiles.map((tile, i) => (
                 <TileCard key={i} tile={tile} />
               ))}

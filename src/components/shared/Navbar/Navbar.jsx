@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -7,9 +6,7 @@ import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { authClient } from "@/lib/auth-client";
 import { RiLogoutBoxLine } from "react-icons/ri";
 import LogoutModal from "@/components/ui/LogoutConfirm";
-import Image from "next/image";
 import { Avatar } from "@heroui/react";
-import { i, u } from "framer-motion/client";
 
 export default function Navbar({ dark = false }) {
   const pathname = usePathname();
@@ -30,6 +27,7 @@ export default function Navbar({ dark = false }) {
     isPending, //loading state
     error, //error object
   } = authClient.useSession();
+  console.log(session?.user);
 
   // name
   const userName = session?.user?.name || "Guest";
@@ -139,7 +137,7 @@ export default function Navbar({ dark = false }) {
                       alt={userName}
                       className="w-full h-full object-cover"
                     />
-                    <Avatar.Fallback className="text-white text-[11px] font-bold">
+                    <Avatar.Fallback className="text-[#D4724D] text-sm font-bold">
                       {initials}
                     </Avatar.Fallback>
                   </Avatar>
@@ -150,7 +148,7 @@ export default function Navbar({ dark = false }) {
                  text-xs font-semibold whitespace-nowrap
                  group-hover:pl-2 group-hover:pr-3"
                     style={{
-                      color: transparent ? "rgba(255,255,255,0.95)" : "#1A1714",
+                      color: transparent ? "white" : "#D4724D",
                     }}
                   >
                     {userName}
@@ -243,8 +241,8 @@ export default function Navbar({ dark = false }) {
           <div className="px-6 py-4 flex flex-col gap-2">
             {[
               { href: "/", label: "Home" },
-              { href: "/all-tiles", label: "All Tiles" },
-              { href: "/my-profile", label: "My Profile" },
+              { href: "/allTiles", label: "All Tiles" },
+              { href: "/profile", label: "My Profile" },
             ].map((link) => (
               <Link
                 key={link.href}

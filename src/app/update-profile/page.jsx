@@ -1,27 +1,35 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { HiArrowLeft } from "react-icons/hi";
 import toast from "react-hot-toast";
 import Footer from "@/components/shared/Footer/Footer";
 import Navbar from "@/components/shared/Navbar/Navbar";
+import { authClient } from "@/lib/auth-client";
+import { Form } from "@heroui/react";
+import { useRouter } from "next/navigation";
 
 export default function UpdateProfilePage() {
-  const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState({ name: "Aminul Islam", image: "" });
-
+  const router = useRouter();
+  const userData = authClient.useSession();
   const handleUpdate = async (e) => {
     e.preventDefault();
-    if (!form.name) {
-      toast.error("Name is required.");
+    const name = e.target.name.value;
+    const image = e.target.image.value;
+
+    const { data, error } = await authClient.updateUser({
+      name,
+      image,
+    });
+
+    if (error) {
+      toast.error("Failed to update profile. Please try again.");
       return;
     }
-    setLoading(true);
-    // TODO: BetterAuth updateUser
-    await new Promise((r) => setTimeout(r, 1000));
-    toast.success("Profile updated successfully!");
-    setLoading(false);
+    if (!error && data) {
+      toast.success("Profile updated successfully!");
+      router.push("/profile");
+    }
   };
 
   return (
@@ -68,7 +76,7 @@ export default function UpdateProfilePage() {
             className="rounded-2xl p-8"
             style={{ background: "#fff", border: "1px solid #E4DFD8" }}
           >
-            <form onSubmit={handleUpdate} className="space-y-5">
+            <Form onSubmit={handleUpdate} className="space-y-5">
               {/* Name */}
               <div>
                 <label
@@ -78,9 +86,9 @@ export default function UpdateProfilePage() {
                   Display Name
                 </label>
                 <input
+                  required
                   type="text"
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  name="name"
                   placeholder="Your display name"
                   className="w-full px-4 py-3 rounded-xl text-sm outline-none"
                   style={{
@@ -100,9 +108,9 @@ export default function UpdateProfilePage() {
                   Image URL
                 </label>
                 <input
-                  type="url"
-                  value={form.image}
-                  onChange={(e) => setForm({ ...form, image: e.target.value })}
+                  type="text"
+                  name="image"
+                  // onChange={(e) => setForm({ ...form, image: e.target.value })}
                   placeholder="https://..."
                   className="w-full px-4 py-3 rounded-xl text-sm outline-none"
                   style={{
@@ -119,13 +127,12 @@ export default function UpdateProfilePage() {
               {/* Submit */}
               <button
                 type="submit"
-                disabled={loading}
                 className="w-full py-3.5 rounded-xl text-sm font-medium text-white transition-opacity hover:opacity-80 disabled:opacity-50"
                 style={{ background: "#0F0E0C" }}
               >
-                {loading ? "Updating…" : "Update Information"}
+                Update Profile
               </button>
-            </form>
+            </Form>
           </div>
         </div>
       </main>

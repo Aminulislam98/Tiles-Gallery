@@ -29,9 +29,7 @@ const stats = [
 export default async function HomePage() {
   const res = await fetch("https://tiles-gallery-server-1.onrender.com/tiles");
   const tilesData = await res.json();
-  console.log(tilesData.length);
   const featuredTiles = tilesData.slice(0, 4);
-  console.log(featuredTiles);
   return (
     <>
       <Navbar dark />

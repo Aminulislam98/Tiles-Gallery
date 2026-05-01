@@ -32,11 +32,12 @@ export default async function MyProfilePage() {
   );
 
   const initials = name
-    .trim()
-    .split(/\s+/)
-    .map((word) => word[0].toUpperCase())
-    .join("");
-
+    ? name
+        .trim()
+        .split(/\s+/)
+        .map((word) => word[0].toUpperCase())
+        .join("")
+    : "G";
   return (
     <>
       <Navbar />
@@ -44,7 +45,7 @@ export default async function MyProfilePage() {
         className="pt-[60px] min-h-screen"
         style={{ background: "#F9F6F1" }}
       >
-        <div className="max-w-3xl mx-auto px-6 py-16">
+        <div className="max-w-3xl mx-auto px-4 py-16">
           {/* ── Profile header card ── */}
           <div
             className="rounded-3xl p-8 flex flex-col sm:flex-row items-start sm:items-center gap-7 mb-5"
@@ -205,12 +206,13 @@ export default async function MyProfilePage() {
                 />
               </div>
             </div>
-            <button
+            <Link
+              href="/update-profile"
               className="px-8 py-3 rounded-xl text-sm font-medium text-white transition-opacity hover:opacity-80"
               style={{ background: "#0F0E0C" }}
             >
               Update Information
-            </button>
+            </Link>
           </div>
         </div>
       </main>

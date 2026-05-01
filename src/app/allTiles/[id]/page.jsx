@@ -5,6 +5,7 @@ import Navbar from "@/components/shared/Navbar/Navbar";
 import FadeUp from "@/components/ui/FadeUp";
 import TileCard from "@/components/TileCard";
 import Footer from "@/components/shared/Footer/Footer";
+import WhishlistToast from "@/components/ui/WhishlistToast";
 
 export default async function TileDetailPage({ params }) {
   const { id } = await params;
@@ -167,17 +168,7 @@ export default async function TileDetailPage({ params }) {
                 )}
 
                 {/* Actions */}
-                <div className="flex gap-3">
-                  <button className="flex-1 py-3.5 rounded-xl text-sm font-medium text-white transition-opacity bg-[#0F0E0C] hover:text-white hover:bg-[#B85C38]">
-                    Add to Wishlist
-                  </button>
-                  <button className="px-4 py-3.5 rounded-xl transition-colors hover:border-[#B85C38] hover:text-[#B85C38] bg-white border border-[#E4DFD8] text-[#8C8880]">
-                    <HiHeart size={18} className="" />
-                  </button>
-                  <button className="px-4 py-3.5 rounded-xl transition-colors hover:opacity-70 bg-white border border-[#E4DFD8] text-[#8C8880] hover:border-[#B85C38] hover:text-[#B85C38]">
-                    <HiShare size={18} />
-                  </button>
-                </div>
+                <WhishlistToast></WhishlistToast>
 
                 <Link
                   href="/allTiles"

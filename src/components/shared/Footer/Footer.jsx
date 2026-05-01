@@ -142,11 +142,16 @@ export default function Footer() {
                 style={{ color: "rgba(255,255,255,0.45)" }}
               >
                 <HiMail
-                  className="mt-0.5 shrink-0"
+                  className="mt-0.5 shrink-0 text-[#D4724D] "
                   style={{ color: "#D4724D" }}
                   size={14}
                 />
-                aminul@aminulislam.co.uk
+                <a
+                  className="hover:text-[#D4724D]"
+                  href="mailto:yourname@gmail.com?subject=Hello&body=Hi, I wanted to reach out..."
+                >
+                  aminul@aminulislam.co.uk
+                </a>
               </li>
               <li
                 className="flex items-start gap-2 text-sm"
@@ -157,7 +162,9 @@ export default function Footer() {
                   style={{ color: "#D4724D" }}
                   size={14}
                 />
-                +44 20 7946 0000
+                <a className="hover:text-[#D4724D]" href="tel:+441234567890">
+                  +441234567890
+                </a>
               </li>
               <li
                 className="flex items-start gap-2 text-sm"
@@ -168,7 +175,14 @@ export default function Footer() {
                   style={{ color: "#D4724D" }}
                   size={14}
                 />
-                14 Artisan Way, London, UK
+
+                <a
+                  className="hover:text-[#D4724D]"
+                  href="https://maps.google.com/?q=Your+Address+London"
+                  target="_blank"
+                >
+                  14 Artisan Way, London, UK
+                </a>
               </li>
             </ul>
             <div

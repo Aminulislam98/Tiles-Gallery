@@ -1,9 +1,4 @@
 import Link from "next/link";
-
-// import Footer from "@/components/layout/Footer";
-
-// import FadeUp from "@/components/ui/FadeUp";
-// import { tilesData } from "@/data/tiles";
 import Navbar from "@/components/shared/Navbar/Navbar";
 import Marquee from "react-fast-marquee";
 import FadeUp from "@/components/ui/FadeUp";

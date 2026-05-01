@@ -217,7 +217,10 @@ export default function LoginPage() {
           </p>
 
           {/* Form */}
-          <Form onSubmit={onSubmit} className="flex w-96 flex-col gap-4">
+          <Form
+            onSubmit={onSubmit}
+            className="flex max-w-full w-full flex-col gap-4"
+          >
             {/* name */}
             <TextField
               isRequired

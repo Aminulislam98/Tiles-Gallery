@@ -130,8 +130,8 @@ export default function Navbar({ dark = false }) {
                   <div className=" rounded-full">
                     {userImage ? (
                       <Image
-                        src={userImage}
-                        alt={userName}
+                        src={userImage && userImage}
+                        alt={userName && userName}
                         width={32}
                         height={32}
                         className="w-8 h-8 rounded-full object-cover shrink-0"

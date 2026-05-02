@@ -107,7 +107,7 @@ export default function AboutPage() {
             className="absolute left-12 top-1/4 bottom-16 w-px hidden md:block"
             style={{ background: "rgba(184,92,56,0.4)" }}
           />
-          <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 h-full flex flex-col justify-end pb-16 md:pb-20">
+          <div className="relative z-10 max-w-7xl mx-auto px-3 md:px-12 h-full flex flex-col justify-end pb-16 md:pb-20">
             <p
               className="text-xs font-semibold uppercase tracking-[4px] mb-4"
               style={{ color: "#B85C38" }}
@@ -194,7 +194,7 @@ export default function AboutPage() {
 
       {/* ── MISSION — split with floating photo cards ── */}
       <section style={{ background: "#FAF7F2" }} className="py-24">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+        <div className="max-w-7xl mx-auto px-3 md:px-6 grid md:grid-cols-2 gap-16 items-center">
           <div>
             <p
               className="text-xs font-semibold uppercase tracking-widest mb-4"
@@ -255,7 +255,7 @@ export default function AboutPage() {
           </div>
 
           {/* Layered photo composition */}
-          <div className="relative h-[420px] mt-10 md:mt-0">
+          <div className="relative h-105 mt-10 md:mt-0">
             <div className="relative h-full rounded-2xl overflow-hidden">
               <Image
                 src="https://images.unsplash.com/photo-1615529328331-f8917597711f?w=900&q=85"
@@ -297,8 +297,8 @@ export default function AboutPage() {
       </section>
 
       {/* ── BENTO GRID — real indoor spaces ── */}
-      <section style={{ background: "#F2EDE6" }} className="py-20">
-        <div className="max-w-7xl mx-auto px-6">
+      <section style={{ background: "#F2EDE6" }} className="py-10 md:py-20">
+        <div className="max-w-7xl mx-auto px-3 md:px-6">
           <p
             className="text-xs font-semibold uppercase tracking-widest mb-3 text-center"
             style={{ color: "#B85C38" }}
@@ -400,8 +400,8 @@ export default function AboutPage() {
       </section>
 
       {/* ── VALUES ── */}
-      <section style={{ background: "#FAF7F2" }} className="py-24">
-        <div className="max-w-7xl mx-auto px-6">
+      <section style={{ background: "#FAF7F2" }} className="py-10 md:py-24">
+        <div className="max-w-7xl mx-auto px-3 md:px-6">
           <p
             className="text-xs font-semibold uppercase tracking-widest mb-3 text-center"
             style={{ color: "#B85C38" }}
@@ -454,8 +454,8 @@ export default function AboutPage() {
       </section>
 
       {/* ── TIMELINE ── */}
-      <section style={{ background: "#0F0E0C" }} className="py-24">
-        <div className="max-w-4xl mx-auto px-6">
+      <section style={{ background: "#0F0E0C" }} className="py-10 md:py-24">
+        <div className="max-w-4xl mx-auto px-4 md:px-6">
           <p
             className="text-xs font-semibold uppercase tracking-widest mb-3 text-center"
             style={{ color: "#B85C38" }}
@@ -510,8 +510,8 @@ export default function AboutPage() {
       </section>
 
       {/* ── TEAM ── */}
-      <section style={{ background: "#FAF7F2" }} className="py-24">
-        <div className="max-w-7xl mx-auto px-6">
+      <section style={{ background: "#FAF7F2" }} className="py-10 md:py-24">
+        <div className="max-w-7xl mx-auto px-3 md:px-6">
           <p
             className="text-xs font-semibold uppercase tracking-widest mb-3 text-center"
             style={{ color: "#B85C38" }}

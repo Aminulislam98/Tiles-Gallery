@@ -1,5 +1,6 @@
 import Navbar from "@/components/shared/Navbar/Navbar";
 import Footer from "@/components/shared/Footer/Footer";
+import FadeUp from "@/components/ui/FadeUp";
 
 export const metadata = {
   title: "Privacy Policy | Tiles Gallery",
@@ -81,163 +82,170 @@ export default function PrivacyPage() {
     <>
       <Navbar />
 
-      {/* ── Hero ── */}
-      <section className="pt-[60px]" style={{ background: "#0F0E0C" }}>
-        <div className="max-w-7xl mx-auto px-6 py-20">
-          <p
-            className="text-xs font-semibold uppercase tracking-widest mb-4"
-            style={{ color: "#B85C38" }}
-          >
-            Legal
-          </p>
-          <h1
-            className="font-display font-light text-white"
-            style={{
-              fontSize: "clamp(36px,5vw,64px)",
-              letterSpacing: "-2px",
-              maxWidth: "560px",
-            }}
-          >
-            Privacy
-            <em className="font-light" style={{ color: "#D4724D" }}>
-              {" "}
-              Policy
-            </em>
-          </h1>
-          <p
-            className="text-sm mt-4"
-            style={{ color: "rgba(255,255,255,0.35)" }}
-          >
-            Last updated: 1 April 2025 · Effective immediately
-          </p>
-        </div>
-      </section>
-
-      {/* ── Intro ── */}
-      <section
-        style={{ background: "#FAF7F2", borderBottom: "1px solid #E4DFD8" }}
-        className="py-10"
-      >
-        <div className="max-w-3xl mx-auto px-4 md:Lpx-6">
-          <p className="text-sm leading-relaxed" style={{ color: "#6B6560" }}>
-            The Tile Gallery Ltd ("we", "us", "our") is committed to protecting
-            your personal information. This policy explains what data we
-            collect, how we use it, and your rights under UK GDPR and the Data
-            Protection Act 2018. We are registered with the Information
-            Commissioner's Office (ICO) under registration number ZB123456.
-          </p>
-        </div>
-      </section>
-
-      {/* ── Policy sections ── */}
-      <section style={{ background: "#FAF7F2" }} className=" py-8 md:py-16">
-        <div className="max-w-3xl mx-auto px-3  md:px-6">
-          {/* Quick nav */}
-          <div
-            className="rounded-2xl p-6 mb-12"
-            style={{ background: "#fff", border: "1px solid #E4DFD8" }}
-          >
+      <FadeUp>
+        {/* ── Hero ── */}
+        <section className="pt-[60px]" style={{ background: "#0F0E0C" }}>
+          <div className="max-w-7xl mx-auto px-6 py-20">
             <p
               className="text-xs font-semibold uppercase tracking-widest mb-4"
               style={{ color: "#B85C38" }}
             >
-              Contents
+              Legal
             </p>
-            <ol className="flex flex-col gap-2">
-              {sections.map((s, i) => (
-                <li key={s.title}>
-                  <a
-                    href={`#section-${i}`}
-                    className="text-sm hover:underline transition-colors"
-                    style={{ color: "#6B6560" }}
-                  >
-                    {i + 1}. {s.title}
-                  </a>
-                </li>
-              ))}
-            </ol>
-          </div>
-
-          {/* Sections */}
-          <div className="flex flex-col gap-12">
-            {sections.map((s, i) => (
-              <div key={s.title} id={`section-${i}`}>
-                <div className="flex items-baseline gap-4 mb-4">
-                  <span
-                    className="font-display font-light text-3xl flex-shrink-0"
-                    style={{ color: "#E4DFD8", letterSpacing: "-1px" }}
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h2
-                    className="text-lg font-semibold"
-                    style={{ color: "#1A1714" }}
-                  >
-                    {s.title}
-                  </h2>
-                </div>
-                <div className="flex flex-col gap-3 pl-10">
-                  {s.content.map((para, j) => (
-                    <p
-                      key={j}
-                      className="text-sm leading-relaxed"
-                      style={{ color: "#6B6560" }}
-                    >
-                      {para}
-                    </p>
-                  ))}
-                </div>
-                {i < sections.length - 1 && (
-                  <div
-                    className="mt-12 h-px"
-                    style={{ background: "#E4DFD8" }}
-                  />
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* Contact box */}
-          <div
-            className="mt-16 p-8 rounded-2xl"
-            style={{ background: "#0F0E0C" }}
-          >
-            <p
-              className="text-xs font-semibold uppercase tracking-widest mb-3"
-              style={{ color: "#B85C38" }}
-            >
-              Questions?
-            </p>
-            <h3
-              className="font-display font-light text-white mb-4"
+            <h1
+              className="font-display font-light text-white"
               style={{
-                fontSize: "clamp(22px,3vw,32px)",
-                letterSpacing: "-0.5px",
+                fontSize: "clamp(36px,5vw,64px)",
+                letterSpacing: "-2px",
+                maxWidth: "560px",
               }}
             >
-              Get in touch with our team
-            </h3>
-            <div
-              className="flex flex-col gap-2 text-sm"
-              style={{ color: "rgba(255,255,255,0.5)" }}
+              Privacy
+              <em className="font-light" style={{ color: "#D4724D" }}>
+                {" "}
+                Policy
+              </em>
+            </h1>
+            <p
+              className="text-sm mt-4"
+              style={{ color: "rgba(255,255,255,0.35)" }}
             >
-              <span>
-                Email:{" "}
-                <a
-                  href="mailto:privacy@tilegallery.com"
-                  className="hover:underline"
-                  style={{ color: "#D4724D" }}
-                >
-                  privacy@tilegallery.com
-                </a>
-              </span>
-              <span>
-                The Tile Gallery Ltd, 14 Artisan Quarter, London E2 8HR
-              </span>
+              Last updated: 1 April 2025 · Effective immediately
+            </p>
+          </div>
+        </section>
+      </FadeUp>
+
+      <FadeUp>
+        {/* ── Intro ── */}
+        <section
+          style={{ background: "#FAF7F2", borderBottom: "1px solid #E4DFD8" }}
+          className="py-10"
+        >
+          <div className="max-w-3xl mx-auto px-4 md:Lpx-6">
+            <p className="text-sm leading-relaxed" style={{ color: "#6B6560" }}>
+              The Tile Gallery Ltd ("we", "us", "our") is committed to
+              protecting your personal information. This policy explains what
+              data we collect, how we use it, and your rights under UK GDPR and
+              the Data Protection Act 2018. We are registered with the
+              Information Commissioner's Office (ICO) under registration number
+              ZB123456.
+            </p>
+          </div>
+        </section>
+      </FadeUp>
+
+      <FadeUp>
+        {/* ── Policy sections ── */}
+        <section style={{ background: "#FAF7F2" }} className=" py-8 md:py-16">
+          <div className="max-w-3xl mx-auto px-3  md:px-6">
+            {/* Quick nav */}
+            <div
+              className="rounded-2xl p-6 mb-12"
+              style={{ background: "#fff", border: "1px solid #E4DFD8" }}
+            >
+              <p
+                className="text-xs font-semibold uppercase tracking-widest mb-4"
+                style={{ color: "#B85C38" }}
+              >
+                Contents
+              </p>
+              <ol className="flex flex-col gap-2">
+                {sections.map((s, i) => (
+                  <li key={s.title}>
+                    <a
+                      href={`#section-${i}`}
+                      className="text-sm hover:underline transition-colors"
+                      style={{ color: "#6B6560" }}
+                    >
+                      {i + 1}. {s.title}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            {/* Sections */}
+            <div className="flex flex-col gap-12">
+              {sections.map((s, i) => (
+                <div key={s.title} id={`section-${i}`}>
+                  <div className="flex items-baseline gap-4 mb-4">
+                    <span
+                      className="font-display font-light text-3xl flex-shrink-0"
+                      style={{ color: "#E4DFD8", letterSpacing: "-1px" }}
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h2
+                      className="text-lg font-semibold"
+                      style={{ color: "#1A1714" }}
+                    >
+                      {s.title}
+                    </h2>
+                  </div>
+                  <div className="flex flex-col gap-3 pl-10">
+                    {s.content.map((para, j) => (
+                      <p
+                        key={j}
+                        className="text-sm leading-relaxed"
+                        style={{ color: "#6B6560" }}
+                      >
+                        {para}
+                      </p>
+                    ))}
+                  </div>
+                  {i < sections.length - 1 && (
+                    <div
+                      className="mt-12 h-px"
+                      style={{ background: "#E4DFD8" }}
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Contact box */}
+            <div
+              className="mt-16 p-8 rounded-2xl"
+              style={{ background: "#0F0E0C" }}
+            >
+              <p
+                className="text-xs font-semibold uppercase tracking-widest mb-3"
+                style={{ color: "#B85C38" }}
+              >
+                Questions?
+              </p>
+              <h3
+                className="font-display font-light text-white mb-4"
+                style={{
+                  fontSize: "clamp(22px,3vw,32px)",
+                  letterSpacing: "-0.5px",
+                }}
+              >
+                Get in touch with our team
+              </h3>
+              <div
+                className="flex flex-col gap-2 text-sm"
+                style={{ color: "rgba(255,255,255,0.5)" }}
+              >
+                <span>
+                  Email:{" "}
+                  <a
+                    href="mailto:privacy@tilegallery.com"
+                    className="hover:underline"
+                    style={{ color: "#D4724D" }}
+                  >
+                    privacy@tilegallery.com
+                  </a>
+                </span>
+                <span>
+                  The Tile Gallery Ltd, 14 Artisan Quarter, London E2 8HR
+                </span>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </FadeUp>
 
       <Footer />
     </>

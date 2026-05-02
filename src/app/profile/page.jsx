@@ -1,3 +1,4 @@
+import LogoutButton from "@/components/LogoutButton";
 import Footer from "@/components/shared/Footer/Footer";
 import Navbar from "@/components/shared/Navbar/Navbar";
 import { auth } from "@/lib/auth";
@@ -47,10 +48,10 @@ export default async function MyProfilePage() {
         className="pt-[60px] min-h-screen"
         style={{ background: "#F9F6F1" }}
       >
-        <div className="max-w-3xl mx-auto px-4 py-16">
+        <div className="max-w-3xl mx-auto px-3 py-8  md:py-16">
           {/* ── Profile header card ── */}
           <div
-            className="rounded-3xl p-8 flex flex-col sm:flex-row items-start sm:items-center gap-7 mb-5"
+            className="rounded-3xl p-4 md:p-8 flex flex-col sm:flex-row items-start sm:items-center gap-7 mb-5"
             style={{ background: "#fff", border: "1px solid #E4DFD8" }}
           >
             {/* Avatar */}
@@ -118,7 +119,7 @@ export default async function MyProfilePage() {
             {/* Edit button */}
             <Link
               href="/update-profile"
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-colors hover:opacity-80 shrink-0"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-colors hover:opacity-80 shrink-0 w-full sm:w-auto justify-center"
               style={{
                 border: "1.5px solid #B85C38",
                 color: "#B85C38",
@@ -126,6 +127,9 @@ export default async function MyProfilePage() {
             >
               <HiPencil size={14} /> Edit Profile
             </Link>
+            <div className="w-full sm:hidden">
+              <LogoutButton></LogoutButton>
+            </div>
           </div>
 
           {/* ── Account info card ── */}

@@ -118,7 +118,7 @@ export default function PrivacyPage() {
         style={{ background: "#FAF7F2", borderBottom: "1px solid #E4DFD8" }}
         className="py-10"
       >
-        <div className="max-w-3xl mx-auto px-6">
+        <div className="max-w-3xl mx-auto px-4 md:Lpx-6">
           <p className="text-sm leading-relaxed" style={{ color: "#6B6560" }}>
             The Tile Gallery Ltd ("we", "us", "our") is committed to protecting
             your personal information. This policy explains what data we
@@ -130,8 +130,8 @@ export default function PrivacyPage() {
       </section>
 
       {/* ── Policy sections ── */}
-      <section style={{ background: "#FAF7F2" }} className="py-16">
-        <div className="max-w-3xl mx-auto px-6">
+      <section style={{ background: "#FAF7F2" }} className=" py-8 md:py-16">
+        <div className="max-w-3xl mx-auto px-3  md:px-6">
           {/* Quick nav */}
           <div
             className="rounded-2xl p-6 mb-12"

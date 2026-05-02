@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function TileCard({ tile }) {
   return (
     <div
-      className="rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 w-full"
+      className="md:rounded-2xl overflow-hidden flex flex-col h-full transition-all duration-300 hover:-translate-y-1 w-full"
       style={{
         background: "#fff",
         border: "1px solid #E4DFD8",
@@ -13,7 +13,7 @@ export default function TileCard({ tile }) {
       }}
     >
       {/* Image */}
-      <div className={`relative overflow-hidden max-w-full w-full h-64`}>
+      <div className={`relative overflow-hidden max-w-full w-full h-64 `}>
         <Image
           src={tile.image}
           alt={tile.title}
@@ -38,7 +38,7 @@ export default function TileCard({ tile }) {
       </div>
 
       {/* Body */}
-      <div className="p-4">
+      <div className="p-2 flex flex-col flex-1">
         <p
           className="text-xs font-medium uppercase tracking-wide mb-1"
           style={{ color: "#8C8880" }}
@@ -51,13 +51,13 @@ export default function TileCard({ tile }) {
         >
           {tile.title}
         </h3>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mt-auto ">
           <span className="text-lg font-semibold" style={{ color: "#0F0E0C" }}>
             ${tile.price.toFixed(2)}
           </span>
           <Link
             href={`/allTiles/${tile.id}`}
-            className="px-4 py-1.5 rounded-lg text-sm font-medium text-white transition-colors hover:opacity-80"
+            className="px-2 md:px-4 py-1 md:py-1.5 rounded md:rounded-lg text-sm font-medium text-white transition-colors hover:opacity-80"
             style={{ background: "#0F0E0C" }}
           >
             View Details

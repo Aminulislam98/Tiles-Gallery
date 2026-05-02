@@ -70,6 +70,12 @@ const posts = [
   },
 ];
 
+export const metadata = {
+  title: "Blog | Tiles Gallery",
+  description:
+    "Read the Tiles Gallery Journal for design inspiration, tile trends, and behind-the-scenes stories from our artisan partners. Discover how to choose the perfect tile for your space and stay inspired with our monthly newsletter.",
+};
+
 export default function BlogPage() {
   return (
     <>

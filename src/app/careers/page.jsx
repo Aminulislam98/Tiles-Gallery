@@ -75,6 +75,11 @@ const deptColors = {
   Operations: { bg: "rgba(120,100,60,0.1)", text: "#786432" },
 };
 
+export const metadata = {
+  title: "Careers | Tiles Gallery",
+  description:
+    "Join our team at Tiles Gallery and be part of a passionate group dedicated to premium tile design.",
+};
 export default function CareersPage() {
   return (
     <>

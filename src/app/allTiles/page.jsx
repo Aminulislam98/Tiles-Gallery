@@ -9,6 +9,21 @@ import CategoryButton from "@/components/ui/CategoryButton";
 import SearchInput from "@/components/ui/SearchInput";
 import { Suspense } from "react";
 
+export async function generateMetadata({ searchParams }) {
+  const sp = await searchParams;
+  const category = sp.category || "";
+  if (category) {
+    return {
+      title: `${category.charAt(0).toUpperCase() + category.slice(1)} Tiles — TilesGallery`,
+      description: `Browse our premium ${category} tile collection.`,
+    };
+  }
+  return {
+    title: "All Tiles — TilesGallery",
+    description: "Browse our complete collection of premium artisan tiles.",
+  };
+}
+
 const getTilesRes = async () => {
   const response = await fetch(
     `https://tiles-gallery-server-1.onrender.com/tiles`,

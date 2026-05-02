@@ -3,6 +3,12 @@ import Navbar from "@/components/shared/Navbar/Navbar";
 import Footer from "@/components/shared/Footer/Footer";
 import Link from "next/link";
 
+export const metadata = {
+  title: "About | Tiles Gallery",
+  description:
+    "Learn more about Tiles Gallery and our commitment to premium tile design.",
+};
+
 const stats = [
   { value: "1200+", label: "Tile Varieties" },
   { value: "18", label: "Years of Craft" },

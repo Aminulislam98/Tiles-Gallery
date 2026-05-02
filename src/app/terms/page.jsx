@@ -3,6 +3,12 @@ import Footer from "@/components/shared/Footer/Footer";
 import Link from "next/link";
 import Image from "next/image";
 
+export const metadata = {
+  title: "Terms of Service | Tiles Gallery",
+  description:
+    "Read our Terms of Service to understand the rules and guidelines for using Tiles Gallery's website and services.",
+};
+
 const sections = [
   {
     title: "Acceptance of Terms",

@@ -20,6 +20,11 @@ const stats = [
   { num: "12,000", label: "Happy Customers" },
   { num: "99%", label: "Satisfaction Rate" },
 ];
+export const metadata = {
+  title: "Home | TilesGallery",
+  description:
+    "Discover your perfect surface with Tiles Gallery. Explore our curated collection of premium artisan tiles, from hand-cut Zellige to Italian porcelain. Find unique designs, materials, and styles to elevate your space. Join our community of tile enthusiasts today!",
+};
 
 export default async function HomePage() {
   const res = await fetch("https://tiles-gallery-server-1.onrender.com/tiles");

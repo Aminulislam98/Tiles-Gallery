@@ -1,11 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
-import { HiArrowLeft, HiHeart, HiShare } from "react-icons/hi";
+import { HiArrowLeft } from "react-icons/hi";
 import Navbar from "@/components/shared/Navbar/Navbar";
 import FadeUp from "@/components/ui/FadeUp";
 import TileCard from "@/components/TileCard";
 import Footer from "@/components/shared/Footer/Footer";
 import WhishlistToast from "@/components/ui/WhishlistToast";
+
+export const generateMetadata = async ({ params }) => {
+  const { id } = await params;
+  const res = await fetch("https://tiles-gallery-server-1.onrender.com/tiles");
+  const allTilesData = await res.json();
+  const tile = allTilesData.find((singleTile) => singleTile.id == id);
+  return {
+    title: `${tile?.title} — TilesGallery`,
+    description: tile.description,
+  };
+};
 
 export default async function TileDetailPage({ params }) {
   const { id } = await params;

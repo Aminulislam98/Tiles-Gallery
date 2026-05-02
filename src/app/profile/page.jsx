@@ -1,19 +1,31 @@
 import Footer from "@/components/shared/Footer/Footer";
 import Navbar from "@/components/shared/Navbar/Navbar";
 import { auth } from "@/lib/auth";
-import { div } from "framer-motion/client";
 import { headers } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 import { HiPencil, HiMail, HiCalendar, HiStar } from "react-icons/hi";
 
+export const metadata = {
+  title: "Profile | Tiles Gallery",
+  description:
+    "View and edit your profile information, including name, email, and account details. Manage your Tiles Gallery account settings and preferences.",
+};
+
 export default async function MyProfilePage() {
   const session = await auth.api.getSession({
     headers: await headers(), // you need to pass the headers object.
   });
-  const { name, email, image } = session.user;
 
-  const loginDate = new Date(session.session.createdAt).toLocaleDateString(
+  const { name, email, image } = session?.user || {};
+
+  console.log("image:", image); // 👈 check what value this is
+
+  if (!session) {
+    redirect("/login");
+  }
+
+  const loginDate = new Date(session?.session?.createdAt).toLocaleDateString(
     "en-GB",
     {
       dateStyle: "medium",

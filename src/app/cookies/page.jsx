@@ -3,6 +3,12 @@ import Footer from "@/components/shared/Footer/Footer";
 import Link from "next/link";
 import Image from "next/image";
 
+export const metadata = {
+  title: "Cookies | Tiles Gallery",
+  description:
+    "Read our Cookie Policy to understand how Tiles Gallery uses cookies to enhance your browsing experience, analyze site traffic, and remember your preferences. Learn about the types of cookies we use and how you can manage them.",
+};
+
 const cookieTypes = [
   {
     type: "Essential",

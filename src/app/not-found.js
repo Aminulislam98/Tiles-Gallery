@@ -1,4 +1,9 @@
 import Link from "next/link";
+export const metadata = {
+  title: "Not Found | Tiles Gallery",
+  description:
+    "The page you are looking for does not exist. Explore our collection of premium artisan tiles or return to the homepage to find your perfect surface.",
+};
 
 export default function NotFound() {
   return (

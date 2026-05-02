@@ -6,7 +6,8 @@ import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { authClient } from "@/lib/auth-client";
 import { RiLogoutBoxLine } from "react-icons/ri";
 import LogoutModal from "@/components/ui/LogoutConfirm";
-import { Avatar } from "@heroui/react";
+import { Tooltip } from "@heroui/react";
+import Image from "next/image";
 
 export default function Navbar({ dark = false }) {
   const pathname = usePathname();
@@ -30,6 +31,7 @@ export default function Navbar({ dark = false }) {
 
   // name
   const userName = session?.user?.name || "Guest";
+  const userImage = session?.user?.image;
   const initials = userName
     .trim()
     .split(/\s+/)
@@ -106,6 +108,7 @@ export default function Navbar({ dark = false }) {
           {session ? (
             <>
               {/* User chip */}
+
               <Link
                 href="/profile"
                 className="group transition-all duration-200 hover:scale-[1.02]"
@@ -116,7 +119,7 @@ export default function Navbar({ dark = false }) {
                   borderRadius: "9999px",
                   background:
                     "linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0.1))",
-                  border: "1px solid rgba(255,255,255,0.5)",
+                  border: "0.5px solid rgba(255,255,255,0.5)",
                   boxShadow:
                     "0 4px 16px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6)",
                   backdropFilter: "blur(24px)",
@@ -124,22 +127,27 @@ export default function Navbar({ dark = false }) {
                 }}
               >
                 <div className="flex items-center rounded-full overflow-hidden">
-                  <Avatar
-                    className="w-8 h-8 text-[11px] font-bold flex-shrink-0"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, #D4724D 0%, #B85C38 60%, #96421E 100%)",
-                    }}
-                  >
-                    <Avatar.Image
-                      src={session?.user?.image}
-                      alt={userName}
-                      className="w-full h-full object-cover"
-                    />
-                    <Avatar.Fallback className="text-[#D4724D] text-sm font-bold">
-                      {initials}
-                    </Avatar.Fallback>
-                  </Avatar>
+                  <div className=" rounded-full">
+                    {userImage ? (
+                      <Image
+                        src={userImage}
+                        alt={userName}
+                        width={32}
+                        height={32}
+                        className="w-8 h-8 rounded-full object-cover shrink-0"
+                      />
+                    ) : (
+                      <div
+                        className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0"
+                        style={{
+                          background:
+                            "linear-gradient(135deg, #D4724D 0%, #B85C38 60%, #96421E 100%)",
+                        }}
+                      >
+                        {initials}
+                      </div>
+                    )}
+                  </div>
 
                   <span
                     className="max-w-0 group-hover:max-w-[120px] overflow-hidden
@@ -154,6 +162,7 @@ export default function Navbar({ dark = false }) {
                   </span>
                 </div>
               </Link>
+
               {/* Logout */}
               <button
                 onClick={() => setIsOpen(true)}

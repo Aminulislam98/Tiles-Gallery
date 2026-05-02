@@ -1,6 +1,6 @@
 import { Cormorant_Garamond, Outfit } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/shared/Navbar/Navbar";
+import { HeroUIProvider, RouterProvider } from "@heroui/react";
 import { Toaster } from "react-hot-toast";
 
 export const cormorant = Cormorant_Garamond({

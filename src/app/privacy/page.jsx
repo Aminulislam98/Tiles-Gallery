@@ -1,6 +1,12 @@
 import Navbar from "@/components/shared/Navbar/Navbar";
 import Footer from "@/components/shared/Footer/Footer";
 
+export const metadata = {
+  title: "Privacy Policy | Tiles Gallery",
+  description:
+    "Read our Privacy Policy to understand how Tiles Gallery collects, uses, and protects your personal information.",
+};
+
 const sections = [
   {
     title: "Information We Collect",

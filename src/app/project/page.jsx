@@ -3,6 +3,12 @@ import Navbar from "@/components/shared/Navbar/Navbar";
 import Footer from "@/components/shared/Footer/Footer";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Projects | Tiles Gallery",
+  description:
+    "Explore our portfolio of innovative tile design projects across residential, commercial, and hospitality sectors.",
+};
+
 const projects = [
   {
     id: 1,

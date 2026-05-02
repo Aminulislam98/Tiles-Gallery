@@ -59,13 +59,13 @@ export default function ToastHandler() {
         {/* Avatar */}
         {userImage ? (
           <Image
-            width={8}
-            height={8}
+            width={36}
+            height={36}
             src={userImage}
             alt={userName}
             style={{
-              width: "32px",
-              height: "32px",
+              width: "36px",
+              height: "36px",
               borderRadius: "50%",
               objectFit: "cover",
               flexShrink: 0,

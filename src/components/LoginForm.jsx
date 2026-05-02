@@ -47,7 +47,7 @@ export default function LoginForm() {
   const signInByGoogle = async () => {
     const data = await authClient.signIn.social({
       provider: "google",
-      callbackURL: `${callbackUrl}?toast=welcome`, // 👈 toast param সহ
+      callbackURL: `${callbackUrl}?toast=welcome`,
     });
   };
 

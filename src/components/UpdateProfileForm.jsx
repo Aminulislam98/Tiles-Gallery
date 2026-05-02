@@ -71,7 +71,6 @@ export default function UpdateProfileForm() {
       validImage ? `Profile updated! Welcome, ${updatedName}` : `Name updated!`,
     );
 
-    // ℹ️ gentle info toast if no image provided
     if (!validImage) {
       setTimeout(() => {
         toast.error(

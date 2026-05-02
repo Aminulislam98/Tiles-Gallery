@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Tiles Gallery
+
+A premium artisan tile discovery platform where users can browse, search and filter handmade tiles from around the world — from Moroccan zellige to Italian terracotta.
+
+**Live URL:** [tiles-gallery.vercel.app](https://tiles-gallery.vercel.app)
+
+---
+
+## Purpose
+
+Tiles Gallery was built to showcase a curated collection of premium handmade tiles across multiple categories. Users can search and filter tiles, view detailed product pages, and manage their profile — all within a clean, production-level UI.
+
+---
+
+## Key Features
+
+- Browse 1,200+ artisan tiles across 8 categories
+- Search and filter by title and category (server-side filtering)
+- Google OAuth and email/password authentication via Better Auth
+- Protected profile page with session-based access
+- Responsive design across mobile, tablet and desktop
+- Logout confirmation modal
+- Toast notifications on sign in and sign out
+- Static pages — About, Projects, Blog, Careers, Privacy, Terms, Cookies
+
+---
+
+## Tech Stack
+
+| Layer          | Technology              |
+| -------------- | ----------------------- |
+| Framework      | Next.js 15 (App Router) |
+| Styling        | Tailwind CSS            |
+| UI Components  | HeroUI v3               |
+| Authentication | Better Auth             |
+| Database       | MongoDB Atlas           |
+| Image Hosting  | Unsplash                |
+| Icons          | React Icons             |
+| Notifications  | React Hot Toast         |
+| Deployment     | Vercel                  |
+
+---
+
+## NPM Packages
+
+```bash
+next
+react
+react-dom
+tailwindcss
+@heroui/react
+better-auth
+mongodb
+react-icons
+react-hot-toast
+framer-motion
+```
+
+---
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Add environment variables
+cp .env.example .env.local
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Environment Variables
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```env
+BETTER_AUTH_SECRET=
+BETTER_AUTH_URL=
+MONGODB_URL=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+  app/
+    page.jsx          # Home
+    allTiles/         # Tile gallery with search & filter
+    about/            # About page
+    projects/         # Projects portfolio
+    blog/             # Journal
+    careers/          # Job listings
+    privacy/          # Privacy policy
+    terms/            # Terms of service
+    cookies/          # Cookie policy
+    login/            # Sign in
+    register/         # Sign up
+    profile/          # User profile (protected)
+  components/
+    shared/           # Navbar, Footer
+    ui/               # CategoryButton, SearchInput, LogoutModal
+  lib/
+    auth.js           # Better Auth config
+    auth-client.js    # Client-side auth
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built by Aminul Islam

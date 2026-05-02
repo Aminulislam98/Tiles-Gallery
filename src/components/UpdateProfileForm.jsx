@@ -39,7 +39,7 @@ export default function UpdateProfileForm() {
 
       <FadeUp>
         <main
-          className="pt-[60px] min-h-screen flex items-center justify-center px-6 py-20"
+          className="md:pt-15 min-h-screen flex items-center justify-center px-4 py-10 md:py-20"
           style={{ background: "#F9F6F1" }}
         >
           <div className="w-full max-w-md">

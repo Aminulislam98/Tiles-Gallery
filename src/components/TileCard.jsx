@@ -38,7 +38,7 @@ export default function TileCard({ tile }) {
       </div>
 
       {/* Body */}
-      <div className="p-2 flex flex-col flex-1">
+      <div className="p-2 md:p-4 flex flex-col flex-1">
         <p
           className="text-xs font-medium uppercase tracking-wide mb-1"
           style={{ color: "#8C8880" }}

@@ -1,7 +1,6 @@
 import { Cormorant_Garamond, Outfit } from "next/font/google";
 import "./globals.css";
-import { HeroUIProvider, RouterProvider } from "@heroui/react";
-import { Toaster } from "react-hot-toast";
+import ToasterProvider from "@/components/ToasterProvider";
 
 export const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -29,7 +28,7 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col">
         {children}
-        <Toaster position="top-left" />
+        <ToasterProvider></ToasterProvider>
       </body>
     </html>
   );

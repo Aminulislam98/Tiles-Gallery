@@ -22,6 +22,17 @@ export default function RegisterForm() {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl") || "/";
   const router = useRouter();
+
+  const isValidUrl = (url) => {
+    if (!url) return true;
+    try {
+      new URL(url);
+      return url.startsWith("http://") || url.startsWith("https://");
+    } catch {
+      return false;
+    }
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -29,11 +40,16 @@ export default function RegisterForm() {
     const photoUrl = e.target.photoUrl.value;
     const password = e.target.password.value;
 
+    if (photoUrl && !isValidUrl(photoUrl)) {
+      toast.error("Photo URL must start with http:// or https://");
+      return;
+    }
+
     const { data, error } = await authClient.signUp.email(
       {
         name,
         email,
-        photoUrl,
+        image: photoUrl && isValidUrl(photoUrl) ? photoUrl : undefined,
         password,
       },
       {

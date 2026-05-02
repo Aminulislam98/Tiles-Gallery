@@ -253,7 +253,7 @@ export default function LoginForm() {
                 type="submit"
                 className="bg-black w-full py-3 rounded-xl text-sm font-medium text-white hover:bg-[#B85C38] transition-all duration-200 flex flex-row items-center justify-center gap-2 "
               >
-                Create Account
+                Sign in
                 <MdOutlineArrowRightAlt className="text-xl" />
               </button>
             </div>

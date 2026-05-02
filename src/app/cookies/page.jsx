@@ -65,7 +65,7 @@ const cookieTypes = [
         expires: "1 year",
       },
       {
-        name: "cookie_consent",
+        name: `${"consent"}`,
         purpose: "Stores your cookie preferences",
         expires: "1 year",
       },
@@ -118,8 +118,8 @@ export default function CookiesPage() {
       <Navbar />
 
       {/* ── HERO ── */}
-      <section className="relative pt-[60px]">
-        <div className="relative h-[420px] md:h-[480px]">
+      <section className="relative pt-15">
+        <div className="relative h-105 md:h-120">
           <Image
             src="https://www.hrjohnsonindia.com/assets/images/blog/marble-stones.jpg"
             alt="Cookie Policy"
@@ -186,8 +186,8 @@ export default function CookiesPage() {
       </section>
 
       {/* ── COOKIE TYPES TABLE ── */}
-      <section style={{ background: "#F2EDE6" }} className="py-20">
-        <div className="max-w-7xl mx-auto px-6">
+      <section style={{ background: "#F2EDE6" }} className=" py-10 md:py-20">
+        <div className="max-w-7xl mx-auto px-3 md:px-6">
           <p
             className="text-xs font-semibold uppercase tracking-widest mb-3 text-center"
             style={{ color: "#B85C38" }}
@@ -195,7 +195,7 @@ export default function CookiesPage() {
             Cookie Types
           </p>
           <h2
-            className="font-display font-light text-center mb-14"
+            className="font-display font-light text-center mb7 md:mb-14"
             style={{
               fontSize: "clamp(28px,3.5vw,44px)",
               letterSpacing: "-1px",
@@ -213,7 +213,7 @@ export default function CookiesPage() {
               >
                 {/* Header */}
                 <div
-                  className="flex items-center justify-between px-7 py-5"
+                  className="flex items-center justify-between px-2 md:px-7 py-5"
                   style={{
                     background: "#fff",
                     borderBottom: "1px solid #E4DFD8",
@@ -260,8 +260,9 @@ export default function CookiesPage() {
                 </div>
                 {/* Table */}
                 <div style={{ background: "#FAF7F2" }}>
+                  {/* Header */}
                   <div
-                    className="grid grid-cols-3 px-7 py-3 text-[10px] font-semibold uppercase tracking-widest"
+                    className="grid grid-cols-[1fr_2fr_1fr] px-4 md:px-7 text-[10px] font-semibold uppercase tracking-widest text-center items-center py-3"
                     style={{
                       color: "#9E9891",
                       borderBottom: "1px solid #E4DFD8",
@@ -271,10 +272,12 @@ export default function CookiesPage() {
                     <span>Purpose</span>
                     <span>Expires</span>
                   </div>
+
+                  {/* Rows */}
                   {ct.examples.map((ex, j) => (
                     <div
                       key={ex.name}
-                      className="grid grid-cols-3 px-7 py-4 text-sm"
+                      className="grid grid-cols-[1fr_2fr_1fr] px-4 md:px-7 py-4 text-sm text-center items-center gap-2 text-center"
                       style={{
                         borderBottom:
                           j < ct.examples.length - 1
@@ -283,13 +286,18 @@ export default function CookiesPage() {
                         color: "#6B6560",
                       }}
                     >
+                      {/* Cookie Name */}
                       <span
                         className="font-mono text-xs"
                         style={{ color: "#1A1714" }}
                       >
                         {ex.name}
                       </span>
+
+                      {/* Purpose */}
                       <span>{ex.purpose}</span>
+
+                      {/* Expires */}
                       <span style={{ color: "#B85C38" }}>{ex.expires}</span>
                     </div>
                   ))}
@@ -301,8 +309,8 @@ export default function CookiesPage() {
       </section>
 
       {/* ── POLICY SECTIONS ── */}
-      <section style={{ background: "#FAF7F2" }} className="py-20">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-[280px_1fr] gap-12 items-start">
+      <section style={{ background: "#FAF7F2" }} className="py-5 md:py-20">
+        <div className="max-w-7xl mx-auto px-2 md:px-6 grid lg:grid-cols-[280px_1fr]  md:gap-12 items-start">
           {/* Sticky sidebar */}
           <aside className="hidden lg:block sticky top-24">
             <p

@@ -134,8 +134,8 @@ export default function TermsPage() {
       </section>
 
       {/* ── MAIN CONTENT ── */}
-      <section style={{ background: "#FAF7F2" }} className="py-20">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-[280px_1fr] gap-12 items-start">
+      <section style={{ background: "#FAF7F2" }} className="py-10 md:py-20">
+        <div className="max-w-7xl mx-auto px-2 md:px-6 grid lg:grid-cols-[280px_1fr]  gap-12 items-start">
           {/* Sticky contents nav */}
           <aside className="hidden lg:block sticky top-24">
             <p

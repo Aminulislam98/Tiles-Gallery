@@ -82,7 +82,7 @@ export default function BlogPage() {
       <Navbar />
 
       {/* ── HERO — featured post as full bleed ── */}
-      <section className="relative pt-[60px]">
+      <section className="relative pt-15">
         <div className="relative h-[600px] md:h-[680px]">
           <Image
             src={featured.img}
@@ -141,8 +141,8 @@ export default function BlogPage() {
       </section>
 
       {/* ── POSTS GRID ── */}
-      <section style={{ background: "#FAF7F2" }} className="py-20">
-        <div className="max-w-7xl mx-auto px-6">
+      <section style={{ background: "#FAF7F2" }} className="py-10 md:py-20">
+        <div className="max-w-7xl mx-auto px-3 md:px-6">
           <p
             className="text-xs font-semibold uppercase tracking-widest mb-3 text-center"
             style={{ color: "#B85C38" }}
@@ -229,8 +229,8 @@ export default function BlogPage() {
       </section>
 
       {/* ── NEWSLETTER — dark section ── */}
-      <section style={{ background: "#0F0E0C" }} className="py-24">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+      <section style={{ background: "#0F0E0C" }} className="py-10 md:py-24">
+        <div className="max-w-7xl mx-auto px-3 md:px-6 grid md:grid-cols-2 gap-16 items-center">
           <div>
             <p
               className="text-xs font-semibold uppercase tracking-widest mb-4"

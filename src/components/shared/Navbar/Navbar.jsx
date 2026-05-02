@@ -262,25 +262,36 @@ export default function Navbar({ dark = false }) {
                 {link.label}
               </Link>
             ))}
-            <div
-              className="flex gap-2 pt-2 border-t"
-              style={{ borderColor: "#E4DFD8" }}
-            >
-              <Link
-                href="/login"
-                className="flex-1 py-2.5 text-center text-sm font-medium rounded-lg border"
-                style={{ borderColor: "#CFC9C0", color: "#8C8880" }}
+            {session ? (
+              <button
+                onClick={() => setIsOpen(true)}
+                className="flex items-center 
+                border border-red-300/50 rounded-lg px-4 py-3 text-base font-medium text-red-600 text-center w-full justify-center
+                cursor-pointer transition-all duration-200 hover:scale-[1.02]"
               >
-                Sign In
-              </Link>
-              <Link
-                href="/register"
-                className="flex-1 py-2.5 text-center text-sm font-medium rounded-lg text-white"
-                style={{ background: "#0F0E0C" }}
+                Logout
+              </button>
+            ) : (
+              <div
+                className="flex gap-2 pt-2 border-t"
+                style={{ borderColor: "#E4DFD8" }}
               >
-                Get Started
-              </Link>
-            </div>
+                <Link
+                  href="/login"
+                  className="flex-1 py-2.5 text-center text-sm font-medium rounded-lg border"
+                  style={{ borderColor: "#CFC9C0", color: "#8C8880" }}
+                >
+                  Sign In
+                </Link>
+                <Link
+                  href="/register"
+                  className="flex-1 py-2.5 text-center text-sm font-medium rounded-lg text-white"
+                  style={{ background: "#0F0E0C" }}
+                >
+                  Get Started
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       )}

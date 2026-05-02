@@ -199,7 +199,7 @@ export default function AboutPage() {
 
       <FadeUp>
         {/* ── MISSION — split with floating photo cards ── */}
-        <section style={{ background: "#FAF7F2" }} className="py-24">
+        <section style={{ background: "#FAF7F2" }} className="py-10 md:py-24">
           <div className="max-w-7xl mx-auto px-3 md:px-6 grid md:grid-cols-2 gap-16 items-center">
             <div>
               <p
@@ -258,46 +258,6 @@ export default function AboutPage() {
                   — Isabelle Fontaine, Founder
                 </cite>
               </blockquote>
-            </div>
-
-            {/* Layered photo composition */}
-            <div className="relative h-105 mt-10 md:mt-0">
-              <div className="relative h-full rounded-2xl overflow-hidden">
-                <Image
-                  src="https://images.unsplash.com/photo-1615529328331-f8917597711f?w=900&q=85"
-                  alt="Artisan tile craft"
-                  fill
-                  className="object-cover"
-                  sizes="50vw"
-                />
-              </div>
-              {/* Floating small photo bottom-left */}
-              <div
-                className="absolute -bottom-6 -left-6 w-44 h-44 rounded-2xl overflow-hidden"
-                style={{ border: "4px solid #FAF7F2" }}
-              >
-                <Image
-                  src="https://images.unsplash.com/photo-1584622781564-1d987f7333c1?w=400&q=85"
-                  alt="Zellige detail"
-                  fill
-                  className="object-cover"
-                  sizes="176px"
-                />
-              </div>
-              {/* Circular badge top-right */}
-              <div
-                className="absolute -top-5 -right-5 w-24 h-24 rounded-full flex flex-col items-center justify-center text-center"
-                style={{ background: "#B85C38" }}
-              >
-                <p className="font-display text-white text-2xl font-light leading-none">
-                  18
-                </p>
-                <p className="text-white text-[9px] uppercase tracking-wider leading-tight mt-1">
-                  Years
-                  <br />
-                  of Craft
-                </p>
-              </div>
             </div>
           </div>
         </section>

@@ -268,7 +268,7 @@ export default function Navbar({ dark = false }) {
                 border border-red-300/50 rounded-lg px-4 py-3 text-base font-medium text-red-600 text-center w-full justify-center
                 cursor-pointer transition-all duration-200 hover:scale-[1.02]"
               >
-                Logout
+                Sign Out
               </button>
             ) : (
               <div

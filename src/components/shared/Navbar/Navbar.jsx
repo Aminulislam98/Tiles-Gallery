@@ -256,8 +256,7 @@ export default function Navbar({ dark = false }) {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="px-4 py-3 rounded-lg text-sm font-medium"
-                style={{ color: "#8C8880" }}
+                className={`px-4 py-3 rounded-lg text-base font-medium ${pathname === link.href ? "bg-[#E4DFD8] text-[#B85C38] border border-[#B85C38]" : "transparent text-[#8C8880]"}`}
               >
                 {link.label}
               </Link>

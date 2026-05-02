@@ -134,7 +134,7 @@ export default async function MyProfilePage() {
 
           {/* ── Account info card ── */}
           <div
-            className="rounded-2xl p-7 mb-5"
+            className="rounded-2xl p-4 md:p-7 mb-5"
             style={{ background: "#fff", border: "1px solid #E4DFD8" }}
           >
             <p
@@ -164,7 +164,7 @@ export default async function MyProfilePage() {
 
           {/* ── Update info card ── */}
           <div
-            className="rounded-2xl p-7"
+            className="rounded-2xl px-4 py-7  md:p-7 "
             style={{ background: "#fff", border: "1px solid #E4DFD8" }}
           >
             <p
@@ -214,7 +214,7 @@ export default async function MyProfilePage() {
             </div>
             <Link
               href="/update-profile"
-              className="px-8 py-3 rounded-xl text-sm font-medium text-white transition-opacity hover:opacity-80"
+              className="px-8 py-3 rounded-xl text-sm font-medium text-white transition-opacity hover:opacity-80 w-full sm:w-auto block text-center"
               style={{ background: "#0F0E0C" }}
             >
               Update Information

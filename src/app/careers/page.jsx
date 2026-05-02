@@ -160,8 +160,8 @@ export default function CareersPage() {
       </section>
 
       {/* ── STUDIO SPLIT ── */}
-      <section style={{ background: "#FAF7F2" }} className="py-24">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+      <section style={{ background: "#FAF7F2" }} className="py-10 md:py-24">
+        <div className="max-w-7xl mx-auto px-3 md:px-6 grid md:grid-cols-2 gap-16 items-center">
           <div>
             <p
               className="text-xs font-semibold uppercase tracking-widest mb-4"
@@ -258,8 +258,8 @@ export default function CareersPage() {
       </section>
 
       {/* ── PERKS ── */}
-      <section style={{ background: "#F2EDE6" }} className="py-20">
-        <div className="max-w-7xl mx-auto px-6">
+      <section style={{ background: "#F2EDE6" }} className="py-10 md:py-20">
+        <div className="max-w-7xl mx-auto px-3 md:px-6">
           <p
             className="text-xs font-semibold uppercase tracking-widest mb-3 text-center"
             style={{ color: "#B85C38" }}
@@ -312,8 +312,12 @@ export default function CareersPage() {
       </section>
 
       {/* ── OPEN ROLES ── */}
-      <section id="roles" style={{ background: "#FAF7F2" }} className="py-24">
-        <div className="max-w-5xl mx-auto px-6">
+      <section
+        id="roles"
+        style={{ background: "#FAF7F2" }}
+        className="py-10 md:py-24"
+      >
+        <div className="max-w-5xl mx-auto px-3 md:px-6">
           <p
             className="text-xs font-semibold uppercase tracking-widest mb-3 text-center"
             style={{ color: "#B85C38" }}
@@ -393,7 +397,7 @@ export default function CareersPage() {
       </section>
 
       {/* ── CTA — full photo background ── */}
-      <section className="relative py-32 text-center overflow-hidden">
+      <section className="relative py-10 md:py-32 text-center overflow-hidden">
         <Image
           src="https://images.unsplash.com/photo-1615529328331-f8917597711f?w=1800&q=85"
           alt="Artisan tile work"
@@ -405,7 +409,7 @@ export default function CareersPage() {
           className="absolute inset-0"
           style={{ background: "rgba(12,10,8,0.78)" }}
         />
-        <div className="relative z-10 max-w-2xl mx-auto px-6">
+        <div className="relative z-10 max-w-2xl mx-auto px-3 md:px-6">
           <p
             className="text-xs font-semibold uppercase tracking-widest mb-4"
             style={{ color: "#B85C38" }}

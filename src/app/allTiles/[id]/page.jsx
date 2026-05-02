@@ -32,7 +32,7 @@ export default async function TileDetailPage({ params }) {
       <Navbar />
 
       <main className="pt-15 bg-[#F9F6F1] min-h-screen">
-        <div className="max-w-7xl mx-auto px-6 py-12">
+        <div className="max-w-7xl mx-auto px-3 md:px-6 py-12">
           {/* Navigation bar */}
           <div
             className="flex items-center gap-2 text-sm mb-10"

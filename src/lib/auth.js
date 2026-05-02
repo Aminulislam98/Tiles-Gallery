@@ -6,6 +6,10 @@ const client = new MongoClient(process.env.MONGODB_URL);
 const db = client.db("TilesGallery");
 
 export const auth = betterAuth({
+  trustedOrigins: [
+    "http://localhost:3000",
+    "https://tiles-gallery-sigma.vercel.app", // 👈 add this
+  ],
   database: mongodbAdapter(db, { client }),
   emailAndPassword: {
     enabled: true,

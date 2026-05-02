@@ -49,8 +49,10 @@ export default function RegisterForm() {
   const signInByGoogle = async () => {
     const { data, error } = await authClient.signIn.social({
       provider: "google",
-      callbackURL: callbackUrl,
+      callbackURL: `${callbackUrl}?toast=welcome`,
     });
+    console.log("data:", data);
+    console.log("error:", error);
   };
 
   return (
@@ -315,9 +317,9 @@ export default function RegisterForm() {
           </Form>
 
           {/* Divider */}
-          <div className="flex items-center gap-3 my-5">
+          <div className="flex items-center gap-3 my-3">
             <span className="flex-1 h-px bg-[#E4DFD8]" />
-            <span className="text-xs text-[#8C8880]">or sign up with</span>
+            <span className="text-base text-[#8C8880]">or</span>
             <span className="flex-1 h-px bg-[#E4DFD8]" />
           </div>
 

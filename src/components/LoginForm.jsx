@@ -2,27 +2,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FcGoogle } from "react-icons/fc";
-import { HiEye, HiEyeOff } from "react-icons/hi";
 import toast from "react-hot-toast";
-import {
-  Button,
-  Description,
-  FieldError,
-  Form,
-  Input,
-  Label,
-  TextField,
-} from "@heroui/react";
-
-export const metadata = {
-  title: "Login | Tiles Gallery",
-  description:
-    "Access your curated tile collection and manage your profile on Tiles Gallery. Sign in to explore, save, and share stunning tile designs from around the world.",
-};
+import { FieldError, Form, Input, Label, TextField } from "@heroui/react";
 
 import { MdOutlineArrowRightAlt } from "react-icons/md";
 import { authClient } from "@/lib/auth-client";
-import { use } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 export default function LoginForm() {
@@ -41,6 +25,7 @@ export default function LoginForm() {
       toast.error("Error signing in: " + error.message);
       return;
     }
+
     setTimeout(() => router.push(`${callbackUrl}?toast=welcome`), 500);
   };
 
@@ -275,9 +260,9 @@ export default function LoginForm() {
           </Form>
 
           {/* Divider */}
-          <div className="flex items-center gap-3 my-5">
+          <div className="flex items-center gap-3 my-3">
             <span className="flex-1 h-px bg-[#E4DFD8]" />
-            <span className="text-xs text-[#8C8880]">or Continue with</span>
+            <span className="text-base text-[#8C8880]">or</span>
             <span className="flex-1 h-px bg-[#E4DFD8]" />
           </div>
 

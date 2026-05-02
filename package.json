@@ -15,7 +15,6 @@
     "@heroui/styles": "^3.0.3",
     "axios": "^1.15.2",
     "better-auth": "^1.6.9",
-    "fadeup": "^1.0.3",
     "framer-motion": "^12.38.0",
     "mongodb": "^7.2.0",
     "motion": "^12.38.0",

@@ -85,8 +85,8 @@ export default function ProjectsPage() {
       <Navbar />
 
       {/* ── HERO — indoor tiled space ── */}
-      <section className="relative pt-[60px]">
-        <div className="relative h-[600px] md:h-[680px]">
+      <section className="relative pt-15">
+        <div className="relative h-150 md:h-170">
           <Image
             src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1800&q=90"
             alt="Projects — tiled interior spaces"
@@ -165,7 +165,7 @@ export default function ProjectsPage() {
           borderBottom: "1px solid rgba(255,255,255,0.06)",
         }}
       >
-        <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="max-w-7xl mx-auto px-3 md:px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((s) => (
             <div key={s.label} className="text-center">
               <p
@@ -190,8 +190,8 @@ export default function ProjectsPage() {
       </section>
 
       {/* ── PROJECTS GRID ── */}
-      <section style={{ background: "#FAF7F2" }} className="py-20">
-        <div className="max-w-7xl mx-auto px-6">
+      <section style={{ background: "#FAF7F2" }} className="py-10 md:py-20">
+        <div className="max-w-7xl mx-auto px-3 md:px-6">
           <p
             className="text-xs font-semibold uppercase tracking-widest mb-3 text-center"
             style={{ color: "#B85C38" }}
@@ -290,8 +290,8 @@ export default function ProjectsPage() {
       </section>
 
       {/* ── PROCESS STRIP ── */}
-      <section style={{ background: "#F2EDE6" }} className="py-20">
-        <div className="max-w-7xl mx-auto px-6">
+      <section style={{ background: "#F2EDE6" }} className="py-10 md:py-20">
+        <div className="max-w-7xl mx-auto px-3 md:px-6">
           <p
             className="text-xs font-semibold uppercase tracking-widest mb-3 text-center"
             style={{ color: "#B85C38" }}

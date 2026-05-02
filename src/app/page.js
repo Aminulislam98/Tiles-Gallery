@@ -5,6 +5,8 @@ import FadeUp from "@/components/ui/FadeUp";
 import Image from "next/image";
 import TileCard from "@/components/TileCard";
 import Footer from "@/components/shared/Footer/Footer";
+import { Suspense } from "react";
+import ToastHandler from "@/components/ToastHandler";
 
 const marqueeItems = [
   "New Arrivals: Zellige Ocean Blue",
@@ -34,6 +36,9 @@ export default async function HomePage() {
     <>
       <Navbar dark />
       {/* ── HERO ── */}
+      <Suspense fallback={null}>
+        <ToastHandler />
+      </Suspense>
       <section className="relative h-screen min-h-170 overflow-hidden">
         <Image
           src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1800&q=85"

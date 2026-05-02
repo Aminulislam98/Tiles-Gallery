@@ -1,11 +1,13 @@
 import LogoutButton from "@/components/LogoutButton";
 import Footer from "@/components/shared/Footer/Footer";
 import Navbar from "@/components/shared/Navbar/Navbar";
+import ToastHandler from "@/components/ToastHandler";
 import FadeUp from "@/components/ui/FadeUp";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 import { HiPencil, HiMail, HiCalendar, HiStar } from "react-icons/hi";
 
 export const metadata = {
@@ -45,6 +47,9 @@ export default async function MyProfilePage() {
   return (
     <>
       <Navbar />
+      <Suspense fallback={null}>
+        <ToastHandler />
+      </Suspense>
       <FadeUp>
         <main
           className="pt-[60px] min-h-screen"

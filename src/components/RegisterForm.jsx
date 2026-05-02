@@ -16,9 +16,11 @@ import { Check } from "@gravity-ui/icons";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function RegisterForm() {
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
   const router = useRouter();
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -36,20 +38,18 @@ export default function RegisterForm() {
       },
       {
         onSuccess: () => {
-          router.push("/");
+          router.push(`${callbackUrl}?toast=signup`);
         },
       },
     );
-    if (!error) {
-      toast.success("Account created successfully!");
-    } else {
+    if (error) {
       toast.error("Error creating account: " + error.message);
     }
   };
   const signInByGoogle = async () => {
     const { data, error } = await authClient.signIn.social({
       provider: "google",
-      callbackURL: "/",
+      callbackURL: callbackUrl,
     });
   };
 

@@ -6,6 +6,8 @@ import FadeUp from "@/components/ui/FadeUp";
 import TileCard from "@/components/TileCard";
 import Footer from "@/components/shared/Footer/Footer";
 import WhishlistToast from "@/components/ui/WhishlistToast";
+import { Suspense } from "react";
+import ToastHandler from "@/components/ToastHandler";
 
 export const generateMetadata = async ({ params }) => {
   const { id } = await params;
@@ -30,6 +32,9 @@ export default async function TileDetailPage({ params }) {
   return (
     <>
       <Navbar />
+      <Suspense fallback={null}>
+        <ToastHandler />
+      </Suspense>
 
       <main className="pt-15 bg-[#F9F6F1] min-h-screen">
         <div className="max-w-7xl mx-auto px-3 md:px-6 py-6 md:py-12">

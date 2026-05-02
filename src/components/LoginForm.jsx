@@ -22,8 +22,13 @@ export const metadata = {
 
 import { MdOutlineArrowRightAlt } from "react-icons/md";
 import { authClient } from "@/lib/auth-client";
+import { use } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function LoginForm() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
   const onSubmit = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -31,19 +36,18 @@ export default function LoginForm() {
     const { data, error } = await authClient.signIn.email({
       email,
       password,
-      callbackURL: "/",
     });
     if (error) {
       toast.error("Error signing in: " + error.message);
       return;
     }
-    toast.success("Signed in successfully!");
+    setTimeout(() => router.push(`${callbackUrl}?toast=welcome`), 500);
   };
 
   const signInByGoogle = async () => {
     const data = await authClient.signIn.social({
       provider: "google",
-      callbackURL: "/",
+      callbackURL: `${callbackUrl}?toast=welcome`, // 👈 toast param সহ
     });
   };
 

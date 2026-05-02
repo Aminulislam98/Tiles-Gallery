@@ -21,6 +21,7 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #b85c38;
 }
+
 .reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -33,10 +34,9 @@
   opacity: 1;
   transform: translateY(0px);
 }
-/* globals.css */
+
 html,
 body {
-  overflow-x: hidden;
-  overscroll-behavior-x: none;
   background: #f9f6f1;
+  overscroll-behavior-y: none;
 }

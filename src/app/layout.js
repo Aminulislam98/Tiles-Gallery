@@ -22,6 +22,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html
+      style={{ overscrollBehavior: "auto" }}
       data-scroll-behavior="smooth"
       lang="en"
       className={`${cormorant.className} ${outfit.className} h-full antialiased`}

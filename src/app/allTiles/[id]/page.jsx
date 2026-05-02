@@ -32,10 +32,10 @@ export default async function TileDetailPage({ params }) {
       <Navbar />
 
       <main className="pt-15 bg-[#F9F6F1] min-h-screen">
-        <div className="max-w-7xl mx-auto px-3 md:px-6 py-12">
+        <div className="max-w-7xl mx-auto px-3 md:px-6 py-6 md:py-12">
           {/* Navigation bar */}
           <div
-            className="flex items-center gap-2 text-sm mb-10"
+            className="flex items-center gap-2 text-sm mb-6 md:mb-10"
             style={{ color: "#8C8880" }}
           >
             <Link href="/" className="hover:underline">
@@ -55,7 +55,7 @@ export default async function TileDetailPage({ params }) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
             {/* LEFT — image */}
             <div>
-              <div className="relative rounded-2xl overflow-hidden h-160">
+              <div className="relative rounded-2xl overflow-hidden h-160 ">
                 <Image
                   src={tile?.image}
                   alt={tile?.title}
@@ -74,26 +74,6 @@ export default async function TileDetailPage({ params }) {
                   </div>
                 )}
               </div>
-
-              {/* Thumbnail strip */}
-              {/* <div className="flex gap-3 mt-3">
-                {related.slice(0, 3).map((t) => (
-                  <Link
-                    key={t.id}
-                    href={`/tile/${t.id}`}
-                    className="relative w-20 h-20 rounded-xl overflow-hidden shrink-0 transition-all hover:opacity-80"
-                    style={{ border: "2px solid #E4DFD8" }}
-                  >
-                    <Image
-                      src={t.image}
-                      alt={t.title}
-                      fill
-                      className="object-cover"
-                      sizes="80px"
-                    />
-                  </Link>
-                ))}
-              </div> */}
             </div>
 
             {/* RIGHT — details */}
@@ -193,7 +173,7 @@ export default async function TileDetailPage({ params }) {
           </div>
 
           {/* Related tiles */}
-          <div className="mt-20">
+          <div className="mt-10 md:mt-20">
             <FadeUp>
               <h2
                 className="font-display font-light leading-tight mb-10"

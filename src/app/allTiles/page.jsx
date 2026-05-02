@@ -9,6 +9,7 @@ import CategoryButton from "@/components/ui/CategoryButton";
 import SearchInput from "@/components/ui/SearchInput";
 import { Suspense } from "react";
 import FadeUp from "@/components/ui/FadeUp";
+import CategorySwiper from "@/components/ CateforySwiper";
 
 export async function generateMetadata({ searchParams }) {
   const sp = await searchParams;
@@ -99,7 +100,7 @@ export default async function AllTilesPage({ searchParams }) {
       <Navbar />
 
       {/* ── Hero banner with real photo ── */}
-      <section className="relative pt-[60px]">
+      <section className="relative pt-15">
         <div className="relative h-96">
           <Image
             src="https://images.unsplash.com/photo-1584622781564-1d987f7333c1?w=1800&q=85"
@@ -114,7 +115,7 @@ export default async function AllTilesPage({ searchParams }) {
             style={{ background: "rgba(15,14,12,0.72)" }}
           />
 
-          <div className="relative z-10 max-w-7xl mx-auto px-6 h-full flex flex-col justify-center">
+          <div className="relative z-10 max-w-7xl mx-auto px-3 md:px-6 h-full flex flex-col justify-center">
             <p
               className="text-xs font-semibold uppercase tracking-widest mb-3"
               style={{ color: "#B85C38" }}
@@ -139,29 +140,28 @@ export default async function AllTilesPage({ searchParams }) {
             >
               Browse our complete collection of premium artisan tiles.
             </p>
-            <Suspense fallback={<div>Loading...</div>}>
-              <SearchInput></SearchInput>
-            </Suspense>
+            <div className="w-full md:w-auto">
+              <Suspense fallback={<div>Loading...</div>}>
+                <SearchInput></SearchInput>
+              </Suspense>
+            </div>
           </div>
         </div>
 
+        {/* Category pills */}
         {/* Category pills */}
         <div
           className="sticky top-[60px] z-40"
           style={{ background: "#FAF7F2", borderBottom: "1px solid #E4DFD8" }}
         >
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="flex gap-2 py-4 overflow-x-auto">
-              {categories.map((cat) => (
-                <CategoryButton key={cat.id} cat={cat}></CategoryButton>
-              ))}
-            </div>
+          <div className="max-w-7xl mx-auto">
+            <CategorySwiper categories={categories} />
           </div>
         </div>
       </section>
 
       {/* Grid */}
-      <section className="max-w-7xl w-full mx-auto md:px-3 py-14">
+      <section className="max-w-7xl w-full mx-auto md:px-3 pb-5 md:py-14">
         {allTiles.length === 0 ? (
           <div className="text-center py-24">
             <p

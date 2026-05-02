@@ -24,7 +24,7 @@ export default function SearchInput() {
     <div className="flex items-center gap-2 max-w-lg">
       {/* Input */}
       <div
-        className="flex-1 flex items-center gap-2 px-4 py-3 rounded-xl"
+        className="flex-1 flex items-center gap-2 md:px-4 py-3 rounded-xl"
         style={{
           background: "rgba(255,255,255,0.08)",
           border: "1px solid rgba(255,255,255,0.15)",

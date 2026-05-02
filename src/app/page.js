@@ -60,61 +60,63 @@ export default async function HomePage() {
         />
 
         {/* Text */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 h-full flex flex-col justify-center">
-          <div className="max-w-2xl">
-            {/* Eyebrow */}
-            <div className="flex items-center gap-3 mb-6">
-              <span
-                className="text-xs font-semibold tracking-widest uppercase"
-                style={{ color: "#B85C38" }}
-              >
-                Premium Tile Gallery · Est. 2024
-              </span>
-            </div>
+        <FadeUp className="relative z-10 h-full">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 h-full flex flex-col justify-center">
+            <div className="max-w-2xl">
+              {/* Eyebrow */}
+              <div className="flex items-center gap-3 mb-6">
+                <span
+                  className="text-xs font-semibold tracking-widest uppercase"
+                  style={{ color: "#B85C38" }}
+                >
+                  Premium Tile Gallery · Est. 2024
+                </span>
+              </div>
 
-            {/* Heading */}
-            <h1
-              className="font-display font-light text-white leading-tight mb-6"
-              style={{
-                fontSize: "clamp(48px,7vw,84px)",
-                letterSpacing: "-1.5px",
-              }}
-            >
-              Discover Your
-              <br />
-              <em className="font-light" style={{ color: "#D4724D" }}>
-                Perfect Surface
-              </em>
-              <br />
-              Story
-            </h1>
-
-            <p
-              className="text-base leading-relaxed mb-8 font-light"
-              style={{ color: "rgba(255,255,255,0.6)", maxWidth: "420px" }}
-            >
-              Curated artisan tiles from master craftspeople worldwide — from
-              hand-cut Zellige to Italian porcelain.
-            </p>
-
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="/allTiles"
-                className="px-8 py-3.5 rounded-xl text-sm font-medium text-white transition-opacity hover:opacity-90"
-                style={{ background: "#B85C38" }}
+              {/* Heading */}
+              <h1
+                className="font-display font-light text-white leading-tight mb-6"
+                style={{
+                  fontSize: "clamp(48px,7vw,84px)",
+                  letterSpacing: "-1.5px",
+                }}
               >
-                Browse Gallery →
-              </Link>
-              <Link
-                href="/allTiles"
-                className="px-7 py-3.5 rounded-xl text-sm font-medium text-white transition-colors hover:bg-white/10"
-                style={{ border: "1px solid rgba(255,255,255,0.25)" }}
+                Discover Your
+                <br />
+                <em className="font-light" style={{ color: "#D4724D" }}>
+                  Perfect Surface
+                </em>
+                <br />
+                Story
+              </h1>
+
+              <p
+                className="text-base leading-relaxed mb-8 font-light"
+                style={{ color: "rgba(255,255,255,0.6)", maxWidth: "420px" }}
               >
-                View Lookbook
-              </Link>
+                Curated artisan tiles from master craftspeople worldwide — from
+                hand-cut Zellige to Italian porcelain.
+              </p>
+
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="/allTiles"
+                  className="px-8 py-3.5 rounded-xl text-sm font-medium text-white transition-opacity hover:opacity-90"
+                  style={{ background: "#B85C38" }}
+                >
+                  Browse Gallery →
+                </Link>
+                <Link
+                  href="/allTiles"
+                  className="px-7 py-3.5 rounded-xl text-sm font-medium text-white transition-colors hover:bg-white/10"
+                  style={{ border: "1px solid rgba(255,255,255,0.25)" }}
+                >
+                  View Lookbook
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
+        </FadeUp>
 
         {/* Scroll hint */}
       </section>
@@ -148,7 +150,7 @@ export default async function HomePage() {
       </div>
 
       {/* ── FEATURED TILES ── */}
-      <section className="py-24" style={{ background: "#F9F6F1" }}>
+      <section className="py-10 md:py-24" style={{ background: "#F9F6F1" }}>
         <div className="max-w-7xl mx-auto px-4">
           <FadeUp>
             <div className="flex items-end justify-between mb-12">

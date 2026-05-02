@@ -8,6 +8,7 @@ import Footer from "@/components/shared/Footer/Footer";
 import CategoryButton from "@/components/ui/CategoryButton";
 import SearchInput from "@/components/ui/SearchInput";
 import { Suspense } from "react";
+import FadeUp from "@/components/ui/FadeUp";
 
 export async function generateMetadata({ searchParams }) {
   const sp = await searchParams;
@@ -177,7 +178,9 @@ export default async function AllTilesPage({ searchParams }) {
           <>
             <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3  md:gap-3 lg:gap-6">
               {allTiles.map((tile, i) => (
-                <TileCard key={i} tile={tile} />
+                <FadeUp key={tile.id} delay={i * 10}>
+                  <TileCard key={i} tile={tile} />
+                </FadeUp>
               ))}
             </div>
           </>

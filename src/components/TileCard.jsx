@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function TileCard({ tile }) {
   return (
     <div
-      className="md:rounded-2xl overflow-hidden flex flex-col h-full transition-all duration-300 hover:-translate-y-1 w-full"
+      className="md:rounded-2xl overflow-hidden flex flex-col h-full transition-all duration-300 sm:hover:-translate-y-1 w-full"
       style={{
         background: "#fff",
         border: "1px solid #E4DFD8",
@@ -18,7 +18,7 @@ export default function TileCard({ tile }) {
           src={tile.image}
           alt={tile.title}
           fill
-          className="object-cover transition-transform duration-500 hover:scale-105"
+          className="object-cover transition-transform duration-500 sm:hover:scale-105"
           sizes="(max-width:768px) 100vw, 33vw"
         />
         {/* Category badge */}

@@ -21,10 +21,6 @@ export default function LoginForm() {
       email,
       password,
     });
-
-    console.log("data:", data);
-    console.log("error:", error);
-
     if (error) {
       toast.error("Error signing in: " + error.message);
       return;

@@ -18,8 +18,6 @@ export default function LoginForm() {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    console.log("submitting...", email); // 👈 form submit হচ্ছে?
-
     const { data, error } = await authClient.signIn.email({
       email,
       password,
@@ -30,15 +28,10 @@ export default function LoginForm() {
       },
     });
 
-    console.log("data:", data); // 👈 কী আসছে?
-    console.log("error:", error); // 👈 কী আসছে?
-
     if (error) {
       toast.error("Error signing in: " + error.message);
       return;
     }
-
-    // router.push(`${callbackUrl}?toast=welcome`);
   };
 
   const signInByGoogle = async () => {

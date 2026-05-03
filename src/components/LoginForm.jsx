@@ -20,13 +20,16 @@ export default function LoginForm() {
     const { data, error } = await authClient.signIn.email({
       email,
       password,
+      fetchOptions: {
+        onSuccess: () => router.push(`${callbackUrl}?toast=welcome`),
+      },
     });
     if (error) {
       toast.error("Error signing in: " + error.message);
       return;
     }
 
-    router.push(`${callbackUrl}?toast=welcome`);
+    // router.push(`${callbackUrl}?toast=welcome`);
   };
 
   const signInByGoogle = async () => {

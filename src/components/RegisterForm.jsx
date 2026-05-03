@@ -66,8 +66,6 @@ export default function RegisterForm() {
       provider: "google",
       callbackURL: `${callbackUrl}?toast=welcome`,
     });
-    console.log("data:", data);
-    console.log("error:", error);
   };
 
   return (

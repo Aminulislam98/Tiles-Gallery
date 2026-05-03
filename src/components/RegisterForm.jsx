@@ -54,7 +54,8 @@ export default function RegisterForm() {
       {
         onSuccess: () => {
           // router.push(`${callbackUrl}?toast=signup`);
-          router.push("/login");
+          // router.push("/login");
+          router.push(`/login?callbackUrl=${encodeURIComponent(callbackUrl)}`);
         },
       },
     );
@@ -351,7 +352,8 @@ export default function RegisterForm() {
           <p className="text-center mt-6 text-sm" style={{ color: "#8C8880" }}>
             Already have an account?{" "}
             <Link
-              href="/login"
+              // href="/login"
+              href={`/login?callbackUrl=${encodeURIComponent(callbackUrl)}`}
               className="font-semibold underline-offset-4 transition-all hover:underline"
               style={{ color: "#B85C38" }}
             >

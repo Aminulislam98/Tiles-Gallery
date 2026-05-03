@@ -21,6 +21,10 @@ export default function LoginForm() {
       email,
       password,
     });
+
+    console.log("data:", data);
+    console.log("error:", error);
+
     if (error) {
       toast.error("Error signing in: " + error.message);
       return;
@@ -250,6 +254,7 @@ export default function LoginForm() {
             </TextField>
             <div className="flex gap-2">
               <button
+                // href={`/?callbackUrl=${encodeURIComponent(callbackUrl)}`}
                 type="submit"
                 className="bg-black w-full py-3 rounded-xl text-sm font-medium text-white hover:bg-[#B85C38] transition-all duration-200 flex flex-row items-center justify-center gap-2 "
               >
@@ -278,7 +283,8 @@ export default function LoginForm() {
           <p className="text-center mt-6 text-sm" style={{ color: "#8C8880" }}>
             Don't have an account?{" "}
             <Link
-              href="/register"
+              // href="/register"
+              href={`/register?callbackUrl=${encodeURIComponent(callbackUrl)}`}
               className="font-semibold underline-offset-4 transition-all hover:underline"
               style={{ color: "#B85C38" }}
             >

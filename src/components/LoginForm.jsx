@@ -17,13 +17,26 @@ export default function LoginForm() {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
+
+    console.log("submitting...", email); // 👈 form submit হচ্ছে?
+
     const { data, error } = await authClient.signIn.email({
       email,
       password,
       fetchOptions: {
-        onSuccess: () => router.push(`${callbackUrl}?toast=welcome`),
+        onSuccess: () => {
+          console.log("✅ success! redirecting to:", callbackUrl); // 👈 আসছে?
+          router.push(`${callbackUrl}?toast=welcome`);
+        },
+        onError: (ctx) => {
+          console.log("❌ onError:", ctx.error); // 👈 এটা add করো
+        },
       },
     });
+
+    console.log("data:", data); // 👈 কী আসছে?
+    console.log("error:", error); // 👈 কী আসছে?
+
     if (error) {
       toast.error("Error signing in: " + error.message);
       return;

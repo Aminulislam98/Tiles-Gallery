@@ -12,7 +12,6 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
-import { Check } from "@gravity-ui/icons";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
@@ -54,7 +53,8 @@ export default function RegisterForm() {
       },
       {
         onSuccess: () => {
-          router.push(`${callbackUrl}?toast=signup`);
+          // router.push(`${callbackUrl}?toast=signup`);
+          router.push("/login");
         },
       },
     );

@@ -8,11 +8,12 @@ const db = client.db("TilesGallery");
 export const auth = betterAuth({
   trustedOrigins: [
     "http://localhost:3000",
-    "https://tiles-gallery-sigma.vercel.app", // 👈 add this
+    "https://tiles-gallery-sigma.vercel.app", //
   ],
   database: mongodbAdapter(db, { client }),
   emailAndPassword: {
     enabled: true,
+    autoSignIn: false,
   },
   socialProviders: {
     google: {

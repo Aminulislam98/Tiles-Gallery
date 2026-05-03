@@ -26,7 +26,7 @@ export default function LoginForm() {
       return;
     }
 
-    setTimeout(() => router.push(`${callbackUrl}?toast=welcome`), 500);
+    router.push(`${callbackUrl}?toast=welcome`);
   };
 
   const signInByGoogle = async () => {
@@ -250,7 +250,7 @@ export default function LoginForm() {
             </TextField>
             <div className="flex gap-2">
               <button
-                href={`/?callbackUrl=${callbackUrl}`}
+                // href={`/?callbackUrl=${callbackUrl}`}
                 type="submit"
                 className="bg-black w-full py-3 rounded-xl text-sm font-medium text-white hover:bg-[#B85C38] transition-all duration-200 flex flex-row items-center justify-center gap-2 "
               >

@@ -280,7 +280,8 @@ export default function LoginForm() {
             Don't have an account?{" "}
             <Link
               // href="/register"
-              href={`/register?callbackUrl=${encodeURIComponent(callbackUrl)}`}
+              //  href={`/?callbackUrl=${encodeURIComponent(callbackUrl)}`}
+              href={`/register?callbackUrl=${callbackUrl}`}
               className="font-semibold underline-offset-4 transition-all hover:underline"
               style={{ color: "#B85C38" }}
             >

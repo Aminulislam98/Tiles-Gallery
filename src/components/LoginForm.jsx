@@ -281,7 +281,7 @@ export default function LoginForm() {
             <Link
               // href="/register"
               //  href={`/?callbackUrl=${encodeURIComponent(callbackUrl)}`}
-              href={`/register?callbackUrl=${callbackUrl}`}
+              href={`/register?callbackUrl=${encodeURIComponent(callbackUrl)}`}
               className="font-semibold underline-offset-4 transition-all hover:underline"
               style={{ color: "#B85C38" }}
             >

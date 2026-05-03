@@ -53,9 +53,7 @@ export default function RegisterForm() {
       },
       {
         onSuccess: () => {
-          // router.push(`${callbackUrl}?toast=signup`);
-          // router.push("/login");
-          router.push(`/login?callbackUrl=${callbackUrl}`);
+          router.push(`/login?callbackUrl=${encodeURIComponent(callbackUrl)}`);
         },
       },
     );

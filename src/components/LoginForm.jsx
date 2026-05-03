@@ -25,11 +25,7 @@ export default function LoginForm() {
       password,
       fetchOptions: {
         onSuccess: () => {
-          console.log("✅ success! redirecting to:", callbackUrl); // 👈 আসছে?
-          router.push(`${callbackUrl}?toast=welcome`);
-        },
-        onError: (ctx) => {
-          console.log("❌ onError:", ctx.error); // 👈 এটা add করো
+          window.location.href = `${callbackUrl}?toast=welcome`;
         },
       },
     });
